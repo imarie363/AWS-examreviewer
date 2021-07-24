@@ -369,7 +369,7 @@ Transferring data with snowball is simple, fast. Secure and can be as little as 
 		5. Snowball can Import to S3 and Export from S3.
 
 	- When should I use Snowball
-		Available Internet Connection 			Theoretical Min. No of days to transfer 100TB at 80% n/w utilisation When to Consider AWS Import/Export Snowball?
+	Available Internet Connection 	Theoretical Min. No of days to transfer 100TB at 80% n/w utilisation 	When to Consider AWS Import/Export Snowball?
 		T3 (44.736 Mbps)		269 days									2TB or more
 		100 Mbps			120 days									5TB or more
 		1000 Mbps			12 days										60TB or more
