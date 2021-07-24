@@ -46,8 +46,6 @@ Key Terminology for IAM:
 - If your identity store is not compatible with SAML 2.0 then you can build a custom identity broker application to perform a similar function. The broker application authenticates users, requests temporary credentials for users from AWS, and then provides them to the user to access AWS resources.
 
 
-
-
 * S3 Exam Tips:
 	1. Remember that S3 is Object-based: i.e allows you to upload files.
 	2. Files can be 0 Bytes to 5 TB.
@@ -55,7 +53,7 @@ Key Terminology for IAM:
 	4. Files are stored in Buckets.
 	5. S3 is a universal namespace. That is, names must be unique globally. Example: https://s3-eu-west-1.amazonaws.com/acloudguru
 	6. Not suitable to install operating systems on S3 due to it being object based (not block storage - EBS), can only be used to store files
-	7. Successful upload will generate a HTTP 200 status code.
+	7. Successful upload will generate an HTTP 200 status code.
 	8. You can turn on MFA delete to avoid accidental delete.
 	9. The key fundamentals of S3 are:
 		- Key (This is simply the name of the object)
@@ -119,10 +117,10 @@ Key Terminology for IAM:
 	1. Encryption In Transit is achieved by
 		a. SSL/TLS (HTTPS)
 	2. Encryption at Rest (Server Side) is achieved by
-		a. Serve-Side
+		a. Server-Side
 			1. S3 Managed Keys - SSE - S3
 			2. AWS Key Management Service, Managed Keys - SSE-KMS
-			3. Serve-Side Encryption with Customer Provided Keys - SSE-C
+			3. Server-Side Encryption with Customer Provided Keys - SSE-C
 		b. Client-Side Encryption
 			4.  Done by the client
 	Lab: We can encrypt the files in S3 by using AES-256 or AWS-KMS.
@@ -224,7 +222,7 @@ Imp:
 	3. You can get better performance by spreading your reads across different prefixes. For Example, If you are using two prefixes, you can achieve 11,000 requests per second.
 	4. If you are using SSE-KMS to encrypt your objects in S3, you must keep in mind the KMS limits.
 		a. Uploading/Downloading will count towards the KMS quota.
-		b. Region-specific, however, it's either 5,500, 10,000 or 30,000 requests our second.
+		b. Region-specific, however, it's either 5,500, 10,000 or 30,000 requests per second.
 		c. Currently, you cannot request a quota increase for KMS.
 	5. Use multipart uploads to increase performance when uploading files to S3.
 	6. Should be used for any files over 100MB and must be used for any file over 5GB.
@@ -289,15 +287,10 @@ Imp:
 
 	CloudFront is a content delivery network (CDN) is a system of distributed servers (network) that deliver webpages and other web content to a user based on the geographic locations of the user, the origin of the webpage and a content delivery server.
 
-  CloudFront - Key Terminology:
-	1. Edge location: This is the location where content will be cached. This is separate to an AWS Region/AZ.
-	2. Origin - This is the origin of all the files that the CDN will distribute. This can be an S3 Bucket, an EC2 Instance, an Elastic Load Balancer or Route 53.
-	3. Distribution - This is the name given the CDN which consists of a collection of Edge locations.
-
   Amazon CloudFront can be used to deliver your entire website, including dynamic, static, streaming and interactive content using a global network of edge locations.
   Requests for your content are automatically routed to the nearest edge location, so content is delivered with the best possible performance.
 
-  When the first user queries for a file, it gets downloaded from the server. The second user gets a cached copy from the Edge Location instead of downloading it again from the server. The file has Time     to live defined usually 48 hours.
+  When the first user queries for a file, it gets downloaded from the server. The second user gets a cached copy from the Edge Location instead of downloading it again from the server. The file has Time to live defined usually 48 hours.
 
 	2 types of distribution:
 	Web Distribution - Typically used for Websites
@@ -324,7 +317,7 @@ Imp:
 
 * CloudFront Signed URLs and Cookies vs S3 Signed URL
    CloudFront Signed URL:
-	1. A signed URL is for individual files, 1 files = 1 URL.
+	1. A signed URL is for individual files, 1 file = 1 URL.
 	2. A signed cookie is for multiple file, 1 cookie = multiple files.
 	3. When we create a signed URL or signed cookie, we attach a policy.
 	   The policy can include:
@@ -342,10 +335,14 @@ Imp:
 
     Exam Tips:
 	1. Use signed URLs/cookies when you want to secure content so that only the people you authorise are able to access it.
-	2. A signed URL is for individual files, 1 files = 1 URL.
+	2. A signed URL is for individual files, 1 file = 1 URL.
 	3. A signed cookie is for multiple file, 1 cookie = multiple files.
 	4. If your origin is EC2, then use CloudFront.
 	5. If your origin is S3, then use S3 signed URL instead of CloudFront Signed URL.
+	
+----> The Cache-Control and Expires headers control how long objects stay in the cache. The Cache-Control max-age directive lets you specify how long (in seconds) you want an object to remain in the cache before CloudFront gets the object again from the origin server. The minimum expiration time CloudFront supports is 0 seconds for web distributions and 3600 seconds for RTMP distributions.
+
+
 
 * Snowball
 	What is Snowball?
@@ -374,8 +371,8 @@ Transferring data with snowball is simple, fast. Secure and can be as little as 
 	- When should I use Snowball
 		Available Internet Connection 			Theoretical Min. No of days to transfer 100TB at 80% n/w utilisation When to Consider AWS Import/Export Snowball?
 		T3 (44.736 Mbps)		269 days									2TB or more
-		100 Mbps						120 days									5TB or more
-		1000 Mbps						12 days										60TB or more
+		100 Mbps			120 days									5TB or more
+		1000 Mbps			12 days										60TB or more
 
 * Storage Gateway
 	1. AWS Storage Gateway is a service that connects an on-premises software appliance with cloud-based storage to provide seamless and secure integration between an organisation's on-premise IT environment and AWS's storage infrastructure. The service enables you to securely store data to the AWS cloud for scalable and cost effective storage.
