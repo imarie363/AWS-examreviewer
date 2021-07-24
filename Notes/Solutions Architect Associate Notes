@@ -390,8 +390,7 @@ Transferring data with snowball is simple, fast. Secure and can be as little as 
 				- Stored Volumes let you store your primary data locally, while asynchronously backing up the data to AWS. Stored volumes provide your on-premises applications with low-latency access to their entire datasets, while providing durable, off-site backups. You can create storage volumes and mount them as iSCSI devices from your on-premises application servers.
 Data written to your stored volumes in stored on your on-premises storage hardware. This data is asynchronously backed up to Amazon Simple Storage Service (Amazon S3) in the form of Amazon Elastic Block Store (Amazon EBS) snapshots. 1 GB - 16 TB in size for Stored Volumes.
 
-			2. Cached Volumes: Cached Volumes let you use Amazon Simple Storage Service (Amazon S3) as your primary data storage while retaining frequently accessed data locally in your storage. Cached volumes minimise the need to scale your on-premises storage infrastructure, while still providing your applications with low-latency access to their frequently accessed data,
-You can create storage volumes up to 32TB in size and attach to them as iSCSI devices from your on-premises application servers. Your gateway stores data that you write to these volumes in Amazon S3 and retains recently read data in your on-premises storage gateways cache and upload buffer storage. 1GB - 32TB in size for Cached Volumes.
+			2. Cached Volumes: Cached Volumes let you use Amazon Simple Storage Service (Amazon S3) as your primary data storage while retaining frequently accessed data locally in your storage. Cached volumes minimise the need to scale your on-premises storage infrastructure, while still providing your applications with low-latency access to their frequently accessed data. You can create storage volumes up to 32TB in size and attach to them as iSCSI devices from your on-premises application servers. Your gateway stores data that you write to these volumes in Amazon S3 and retains recently read data in your on-premises storage gateways cache and upload buffer storage. 1GB - 32TB in size for Cached Volumes.
 
 		c. Tape Gateway (VTL): Tape Gateway offers a durable, cost-effective solution to archive your data in the AWS Cloud. The VTL interface it provides lets you leverage your existing tape-based backup application infrastructure to store data on virtual tape cartridges that you create on your tape gateway, Each tape gateway is preconfigured with a media changer and tape drives, which are available to your existing client backup applications as iSCSI devices. You add tape cartridges as you need to archive your data. Supported by NetBackup, Backup Exec, Veeam etc.
 
@@ -429,7 +428,7 @@ Exam Tips:
 ** IAM Summary
 	- IAM is universal, it does not apply to regions at this time.
 	- The root account is simply the account that's created when you first set up your AWS account and it has complete administrator access.
-	- New users have no permissions when first created and you'll find this is a theme within Amazon. It's called least privilege.
+	- New users have no permissions when first created and you'll find this as a theme within Amazon. It's called least privilege.
 	- So, whenever you create a new user, that user's not going to have any rights or any privileges until you grant them privileges. Likewise when we look at S3, when we create our bucket,
 it's locked down, it's not public and making objects public is not that easy. You have to go through a process to do it. So, that's a common theme within Amazon Web Services.
 	- New users are assigned an access key ID and secret access key when first created.
@@ -2868,22 +2867,22 @@ There is no charge for creating a placement group" and "The name of your placeme
 			- Defines rules for CPU and memory requirements
 			- Monitors resource utilisation
 			- Deploy, update and roll back
-			- Free... for real!, However we pay for the resources that are provisioned.
+			- Free... for real! However we pay for the resources that are provisioned.
 			- Integrates with VPC, security groups, EBS volumes and ELB
 			- CloudTrail and CloudWatch
 
 		ECS Components:
 			- Cluster: Logical collection of ECS resources - either ECS EC2 instances or Fargate instances
 
-			- Task Defintion: Defines your application. Similar to a Dockerfile but for running containers in ECS. Can contain multiple containers.
+			- Task Definition: Defines your application. Similar to a Dockerfile but for running containers in ECS. Can contain multiple containers.
 
-			- Container Definition:	Inside a task defintion, it defines the individual container a task uses. Controls CPU and memory allocation and port mappings.
+			- Container Definition:	Inside a task definition, it defines the individual container a task uses. Controls CPU and memory allocation and port mappings.
 
 			- Task: Single running copy of any containers defined by a task definition. One working copy of an application (e.g., DB and web containers)
 
 			- Service: Allows tasks definitions to be scaled by adding tasks. Defines minimum and maximum values.
 			
-			- Registry:	Storage for container images (e.g, Elastic Container Registry (ECR) or Docket Hub). Used to download images to create containers.
+			- Registry: Storage for container images (e.g, Elastic Container Registry (ECR) or Docket Hub). Used to download images to create containers.
 
 		Fargate
 			- Serverless container engine
