@@ -1173,7 +1173,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 		1.6 MariaDB
 
 	2. Exam Tips: RDS has two features
-		2.1 Multi-AZ - For DR
+		2.1 Multi-AZ - For Disaster Recovery.
 		2.2 Read Replicas - For performance (Allows 5 copies of read replica)
 
 	3. Non Relational Databases (JSON/No SQL) called DynamoDB
@@ -1184,8 +1184,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 
 	5. AWS data warehouse database called Redshift, uses a different type of architecture from a DB perspective and infrastructure layer.
 
-	6. ElastiCache is a web service that makes it easy to deploy, operate and scale as in-memory cache in the cloud. The service improves the performance of web applications
-	   by allowing you to retrieve the information fast, managed, in-memory cache instead of relying entirely on slower disk-based databases.
+	6. ElastiCache is a web service that makes it easy to deploy, operate and scale as in-memory cache in the cloud. The service improves the performance of web applications by allowing you to retrieve the information fast, managed, in-memory cache instead of relying entirely on slower disk-based databases.
 		6.1  ElastiCache supports two open-source in-memory caching engines
 			6.1.1 Memcached
 			6.1.2 Redis
@@ -1198,9 +1197,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 ** RDS - Back Ups, Mutli-AZ & Read Replicas
 
 	1. Automated Backups allow you to recover your database to any point in time within a "retention period".
-	   The retention period can be between one and 35 days. Automated Backups will take a full daily snapshot and will also store transaction logs throughout the day.
-	   When you do a recovery, AWS will first choose the most recent daily back up , and then apply transaction logs relevant to that day. This allows you to do a point in time
-	   recovery down to a second, within the retention period.
+	   The retention period can be between one and 35 days. Automated Backups will take a full daily snapshot and will also store transaction logs throughout the day. When you do a recovery, AWS will first choose the most recent daily back up , and then apply transaction logs relevant to that day. This allows you to do a point in time recovery down to a second, within the retention period.
 
 	2. Automated Backups are enabled by default. The backup data is stored in S3 and you get free storage space equal to the size of your database. So if you have an RDS instance of 10GB, you will get 10GB worth of storage
 
@@ -1210,8 +1207,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 
 	5. Whenever you restore either an Automatic Backup or a manual Snapshot, the restored version of the database will be a new RDS instance with a new DNS endpoint.
 
-	6. Encryption at rest is supported for MySQL, Oracle, SQL Server, PostgreSQL, MariaDB & Aurora. Encryption is done using the AWS Key Management Service (KMS) Service.
- 	   Once your RDS instance is encrypted, as are its automated backups, read replicas, and snapshots.
+	6. Encryption at rest is supported for MySQL, Oracle, SQL Server, PostgreSQL, MariaDB & Aurora. Encryption is done using the AWS Key Management Service (KMS) Service. Once your RDS instance is encrypted, as are its automated backups, read replicas, and snapshots.
 
  	7. Multi-AZ allows you to have an exact copy of your production database in another AZ. AWS handles the replication for you, so when your production database is written to, this write will automatically synchronised to the stand by database.
 
@@ -1227,8 +1223,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 		- MariaDB
 		- Aurora is fault tolerant based on it's architecture.
 
-	10. A Read Replica allows you to have a read-only copy of your production database. This is achieved by using Asynchronous replication from the primary RDS instance to the read replica.
-		  You use read replicas primarily for very read-heavy database workloads.
+	10. A Read Replica allows you to have a read-only copy of your production database. This is achieved by using Asynchronous replication from the primary RDS instance to the read replica. You use read replicas primarily for very read-heavy database workloads.
 
 	11. In the exam: How can you improve performance of the DB
 		1. By using Read Replicas
@@ -1256,7 +1251,7 @@ There is no charge for creating a placement group" and "The name of your placeme
   Exam Tips:
 	1. There are two different types of Backups for RDS
 	  a. Automated Backups
-		b. Database Snapshots
+	  b. Database Snapshots
 
 	2. Read Replicas
 		- Can be Multi-AZ.
@@ -1271,8 +1266,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 		- You can force a fail-over from AZ to another by rebooting the RDS instance.
 
 	4. Encryption at rest is supported for MySQL, Oracle, SQL Server, PostgreSQL, MariaDB & Aurora.
-    - Encryption is done using the AWS Key Management Service (KMS). Once your RDS instance is encrypted, the data stored at rest in the underlying storage is encrypted,
-      As are its automated backups, read replicas, and snapshots.
+    - Encryption is done using the AWS Key Management Service (KMS). Once your RDS instance is encrypted, the data stored at rest in the underlying storage is encrypted, As are its automated backups, read replicas, and snapshots.
 
 ** DynamoDB (NoSQL DB) - Exam Tips
 
@@ -1360,7 +1354,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 
 	   OLTP vs OLAP:
 	   		- OLAP transaction example: Net Profit for EMEA and Pacific for the digital radio product, Pulls in large number of records
-			  - Data Warehousing databases use different type of architecture both from a database perspective and infrastructure layer.
+			- Data Warehousing databases use different type of architecture both from a database perspective and infrastructure layer.
 
 		Redshift can be configured as follows:
 			- Single Node (160Gb)
@@ -1370,9 +1364,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 
 		Redshift uses Advanced compression:
 			- Columnar data stores can be compressed much more than row-based data stores because similar data is stored sequentially on disk.
-			- Amazon Redshift employs multiple compression techniques and can often achieve significant compression relative to traditional relational data stores.
-			  In addition, Amazon Redshift doesn't require indexes or materialised views, and so uses less space than traditional relational database systems.
-			  When loading data into an empty table, Amazon Redshift automatically samples your data and selects the most appropriate compression scheme.
+			- Amazon Redshift employs multiple compression techniques and can often achieve significant compression relative to traditional relational data stores. In addition, Amazon Redshift doesn't require indexes or materialised views, and so uses less space than traditional relational database systems. When loading data into an empty table, Amazon Redshift automatically samples your data and selects the most appropriate compression scheme.
 
 		Massive Parallel Processing (MPP):
 			- Amazon Redshift automatically distributes data and query load across all nodes. Amazon Redshift makes it easy to add nodes to your data warehouse and enables you to maintain fast query performance as your data warehouse grows.
@@ -1384,8 +1376,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 			- Redshift can also asynchronously replicate your snapshots to S3 in another region for DR.
 
 		Pricing
-			- Compute Node Hours (total no of hours you run across all your compute nodes for the billing period. You are billed for 1 unit per node per hour,
-			so a 3-node data warehouse cluster running persistently for an entire month would incur 2,160 instance hours. You will not be charged for leader node hours; only compute nodes will incur charges.)
+			- Compute Node Hours (total no of hours you run across all your compute nodes for the billing period. You are billed for 1 unit per node per hour, so a 3-node data warehouse cluster running persistently for an entire month would incur 2,160 instance hours. You will not be charged for leader node hours; only compute nodes will incur charges.)
 			- Backup
 			- Data Transfer (only within a VPC, not outside of it)
 
@@ -1416,7 +1407,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 
 	3. Things to know about Aurora
 		- Start with 10Gb, Scales in 10 GB increments to 64 TB (Storage Autoscaling)
-		- Compute resources can scale up tp 32vCPUS and 244GB of Memory
+		- Compute resources can scale up to 32vCPUS and 244GB of Memory
 		- 2 copies of your data is contained in each availability zone, with minimum of 3 availability zones. 6 copies of your data.
 
 	4. Scaling Aurora
@@ -1467,7 +1458,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 
 	   Exam Question: How to improve DB performance
 	   	 1. To use Read Replicas
-		   2. To use Elasti Cache
+		 2. To use Elasti Cache
 
 	4. Redis is Multi-AZ
 
@@ -1560,7 +1551,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 				5.2 You cannot log in to these operating systems however
 				5.3 Patching of the RDS OS and DB is Amazon's responsibility
 				5.4 RDS is not serverless
-				5.5 Aurora Serverless and DynamoDB are serverless
+				5.5 Aurora Database and DynamoDB are serverless
 
 		6. There are two different types of Backups for RDS:
 				6.1 Automated Backups
@@ -1579,8 +1570,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 				8.2 You can force a failover from one AZ to another by rebooting the RDS instance.
 
 		9. Encryption at rest is supported for MySQL, Oracle, SQL Server, PostgreSQL, MariaDB & Aurora.
-		   Encryption is done using the AWS Key Management Service (KMS). Once your RDS instance is encrypted, the data stored at rest in the underlying storage is encrypted,
-		   As are its automated backups, read replicas, and snapshots.
+		   Encryption is done using the AWS Key Management Service (KMS). Once your RDS instance is encrypted, the data stored at rest in the underlying storage is encrypted, same as its automated backups, read replicas, and snapshots.
 
 	   10. DynamoDB
 				- Stored on SSD Storage.
@@ -1618,6 +1608,22 @@ There is no charge for creating a placement group" and "The name of your placeme
 
 ** Deploying an Amazon RDS Multi-AZ and Read Replica in AWS (Lab)
 
+
+------> IAM database authentication provides the following benefits:
+
+Network traffic to and from the database is encrypted using Secure Sockets Layer (SSL).
+You can use IAM to centrally manage access to your database resources, instead of managing access individually on each DB instance.
+For applications running on Amazon EC2, you can use profile credentials specific to your EC2 instance to access your database instead of a password, for greater security
+
+
+-----> What would happen to RDS if the primary database instance fails? ; The canonical name record (CNAME) is switched from the primary to standby instance.
+-----> Amazon RDS automatically performs a failover in the event of any of the following:
+
+1. Loss of availability in primary Availability Zone.
+2. Loss of network connectivity to primary.
+3. Compute unit failure on primary.
+4. Storage failure on primary.
+-----> Amazon RDS Read Replicas provide enhanced performance and durability for database (DB) instances. This feature makes it easy to elastically scale out beyond the capacity constraints of a single DB instance for read-heavy database workloads.
 ==========================================================================================================================================================================================
 * Advanced IAM
 ==========================================================================================================================================================================================
@@ -2353,7 +2359,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 			Exam Scenario 1: A user trying to visit a website behind a classic load balancer and essentially what's happening is it's just sending all the traffic to one EC2 instance.
 			Answer: Disable Sticky session.
 
-			Exam Scenario 2: If you have got an EC2 instance or an application, where you're writing to an EC2 instance like local disk, then of course you would want to enable Sticky 			session.
+			Exam Scenario 2: If you have got an EC2 instance or an application, where you're writing to an EC2 instance like local disk, then of course you would want to enable Sticky session.
 
 		2. Cross Zone Load Balancing:
 			Enables you to load balance across multiple AZ's
@@ -2367,7 +2373,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 				When we enable Cross Zone Load Balancing: The Load balancer will distribute the load evenly among instances on both AZ's.
 
 			Exam Scenario 2:
-				We got a user and we are using Route 53 for our DNS, which is sending all the requests (100%) to a Load Balancer in AZ1, The first AZ1 has 4 EC2 instances and the second 				has only one EC2 instance.
+				We got a user and we are using Route 53 for our DNS, which is sending all the requests (100%) to a Load Balancer in AZ1, The first AZ1 has 4 EC2 instances and the second has only one EC2 instance.
 
 				Route 53's 100% traffic is sent to the only load balancer in US-EAST-1A and no traffic is being sent to US-EAST-1B.
 				In this scenario, we enable Cross Zone Load Balancing to distribute the traffic evenly between US-EAST-1A and US-EAST-1B
@@ -2378,7 +2384,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 			For Example: you can route general requests to one target group and requests to render images to another target group
 
 			Exam Scenario 1:
-				We got a user and we are using Route 53 for our DNS, which is sending all the requests (100%) to a Load Balancer in AZ1, The first AZ1 has 4 EC2 instances and the second 				has only one EC2 instance.
+				We got a user and we are using Route 53 for our DNS, which is sending all the requests (100%) to a Load Balancer in AZ1, The first AZ1 has 4 EC2 instances and the second has only one EC2 instance.
 
 				www.myurl.com should go to AZ1 and www.myurl.com/images should go to the media instances in AZ2. In this instance, we enable Path Patterns.
 
@@ -2398,13 +2404,12 @@ There is no charge for creating a placement group" and "The name of your placeme
 
 		What are my scaling options: (Exam Tips)
 			1. Maintain current instance levels at all times - Performs periodic health checks and launches a new one when an instance is unhealthy.
-			2. Scale Manually - the most basic way to scale your resources where you specify Min size, Desired Capacity, Max Size of your Auto Scaling group.
-			   Amazon EC2 Auto scaling manages the process of creating or terminating instances to maintain the updated capacity.
+			2. Scale Manually - the most basic way to scale your resources where you specify Min size, Desired Capacity, Max Size of your Auto Scaling group. Amazon EC2 Auto scaling manages the process of creating or terminating instances to maintain the updated capacity.
 			3. Scale based on a schedule: based on date and time and predictable schedule.
 			4. Scaled based on a demand: A more advanced way to scale your resources using scaling policies, which let you define parameters that control the scaling process.
-			5. Use predictive scaling: You can use Amazon EC2 Auto Scaling with Amazon Auto Scaling to scale resources across multiple services.
-			   AWS Auto Scaling can help you maintain optimal availability and performance by combing predictive scaling and dynamic scaling (proactive and reactive, respectively)
-			   to scale your Amazon EC2 capacity faster.
+			5. Use predictive scaling: You can use Amazon EC2 Auto Scaling with Amazon Auto Scaling to scale resources across multiple services. AWS Auto Scaling can help you maintain optimal availability and performance by combing predictive scaling and dynamic scaling (proactive and reactive, respectively) to scale your Amazon EC2 capacity faster.
+			6. TCP health check is incorrect. A TCP health check is only offered in Network Load Balancers and Classic Load Balancers.
+			7. Application Load Balancers support path-based routing, host-based routing, and support for containerized applications. If extreme performance and static IP is needed for your application then it is recommend that you use Network Load Balancer. If your application is built within the EC2 Classic network then you should use Classic Load Balancer.
 
 	** Launch Configurations and Auto Scaling Groups - Demo
 		- Create a Launch Configuration and then use Launch Configuration during Auto Scaling Group creation
@@ -2459,7 +2464,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 		- Any component of a distributed application can store messages in a fail-safe queue.
 		- Messages can contain up to 256KB of text in any format. Any component can later retrieve the messages programmatically using the Amazon SQS API.
 		- Think decoupling infrastructure/micro-services means SQS.
-		- 256KB is not a hard limit and it can go up tp 2GB, however it will be stored in S3
+		- 256KB is not a hard limit and it can go up to 2GB, however it will be stored in S3
 		- The queue acts as a buffer between the component producing and saving data, and the component receiving the data for processing.
 		- This means the queue resolves issues that arise if the producer is producing work faster than the consumer can process it, or if the producer or consumer are only intermittently connected to the network.
 
@@ -2470,8 +2475,8 @@ There is no charge for creating a placement group" and "The name of your placeme
 
 			   However, standard queues provide best-effort ordering which ensures that messages are generally delivered in the same order as they are sent
 
-			2. FIFO: The FIFO complement the standard queue.
-			   The most important feature of this queue type are FIFO delivery and exactly-once processing: the order in which messages are sent and received is strictly preserved and a 			   message is delivered once and remains available until a consumer processes and deleted it; duplicates are not introduced into the queue.
+			2. FIFO: The FIFO compliment the standard queue.
+			   The most important feature of this queue type are FIFO delivery and exactly-once processing: the order in which messages are sent and received is strictly preserved and a message is delivered once and remains available until a consumer processes and deleted it; duplicates are not introduced into the queue.
 
 			   FIFO queues also support message groups that allow multiple ordered message groups within a single queue.
 
@@ -2491,7 +2496,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 			  Answer: Visibility timeout is not long enough.
 
 			- SQS guarantees that your messages will be processed at least once.
-			- Amazon SQS long polling is a way to retrieve messages from your Amazon SQS queues. While the regular short polling returns immediately (even if the message queue being 			  polled is empty) , long polling doesn't return a response until a message arrives in the message queue, or the long poll times out.
+			- Amazon SQS long polling is a way to retrieve messages from your Amazon SQS queues. While the regular short polling returns immediately (even if the message queue being polled is empty) , long polling doesn't return a response until a message arrives in the message queue, or the long poll times out.
 
   			Exam Scenario: Your EC2 instances are constantly polling while the queue is empty, so this could increase your costs. How can you reduce the costs?
 			  Answer: Use long polling
@@ -2500,7 +2505,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 
 	** Simple Workflow Service
 		- Amazon Workflow Service (Amazon SWF) is a web service that makes it easy to coordinate work across distributed application components.
-		  SWF enables applications for a range of use cases, including media processing, web application back-ends, business process workflows and analytics pipelines, to be designed as 		  a coordination of tasks.
+		  SWF enables applications for a range of use cases, including media processing, web application back-ends, business process workflows and analytics pipelines, to be designed as a coordination of tasks.
 		- Tasks represent invocations of various processing steps in an application which can be performed by executable code, web service calls, human actions and scripts.
 
 		Exam Scenario: Any human interaction required in the service, think of SWF
@@ -2508,20 +2513,20 @@ There is no charge for creating a placement group" and "The name of your placeme
 		SWF vs SQS:
 			- SQS has a retention period of 14 days; with SWF, workflow executions can last up to 1 year.
 			- Amazon SWF is a task-oriented API. whereas Amazon SQS offers a message-oriented API.
-			- Amazon SWF ensures that a task is assigned only once and is never duplicated. With Amazon SQS, you need to handle duplicated messages and may also need to ensure that a 			  message is processed only once.
-			- Amazon SWF keeps track of all the tasks and events in an application, With Amazon SQS, you need to implement your own application-level tracking, especially if your 			  application uses multiple queues
+			- Amazon SWF ensures that a task is assigned only once and is never duplicated. With Amazon SQS, you need to handle duplicated messages and may also need to ensure that a message is processed only once.
+			- Amazon SWF keeps track of all the tasks and events in an application, With Amazon SQS, you need to implement your own application-level tracking, especially if your application uses multiple queues
 
 		SWF Actors:
-			1. Workflow Starters: An application that can initiate (start) a workflow. Could be your e-commerce website following the placement of order or a mobile app searching for 			   business.
+			1. Workflow Starters: An application that can initiate (start) a workflow. Could be your e-commerce website following the placement of order or a mobile app searching for business.
 			2. Deciders: Control the flow of activity tasks in a workflow execution. If something has finished (or failed) in a workflow, a Decider decides what to do next.
 			3. Activity Workers: Carry out the activity tasks.
 
 	** Simple Notification Service
 		- Amazon Simple Notification Service (Amazon SNS) is a web service that makes it easy to set up, operate and send notifications from the cloud.
-		- It provides developers with highly scalable, flexible and cost-effective capability to publish messages from an application and immediately deliver them to subscribers or other 		  applications.
+		- It provides developers with highly scalable, flexible and cost-effective capability to publish messages from an application and immediately deliver them to subscribers or other applications.
 		- Push notifications to Apple, Google, Fire OS and Windows devices as well as Android devices in China with Baidu Cloud Push.
 		- Besides pushing cloud notifications directly to mobile devices, Amazon SNS can also deliver notification by SMS text message or email to Amazon SQS or to any HTTP endpoint.
-		- SNS allows you to group multiple recipients using topics. A topic is an "access point for allowing recipients to dynamically subscribe to identical copies of the same 	  		  notification
+		- SNS allows you to group multiple recipients using topics. A topic is an "access point for allowing recipients to dynamically subscribe to identical copies of the same notification
 		- One topic can support deliveries to multiple endpoint types - for example, you can group together iOS, Android and SMS recipients,
 		  When you publish once to a topic, SNS delivers appropriately formatted copies of your message to each subscriber.
 
@@ -2553,16 +2558,16 @@ There is no charge for creating a placement group" and "The name of your placeme
 		- CORS is enforced by the client (Browser)
 
 	** Kinesis 101 (Streaming Data)
-		- Amazon Kinesis is a platform on AWS to send your streaming data to. Kinesis makes it easy to load and analyse streaming data, and also providing the ability to build your own 		  custom applications for your business needs.
+		- Amazon Kinesis is a platform on AWS to send your streaming data to. Kinesis makes it easy to load and analyse streaming data, and also providing the ability to build your own custom applications for your business needs.
 
 		- 3 different types of Kinesis (Exam Tips)
 			1. Kinesis Streams: Stores data in Shards. (Retention from 24 hours to 7 days). EC2 instances read this data and store it in S3, DynamoDB, RedShift and EMR.
 
 			   Kinesis Stream consists of Shards (not imp for the exam)
-			   - 5 transactions per sec for reads, up to a max total data read rate of 2 MB per sec abd up to 1000 records per sec for writes, up to a max total data write of 1 MB per 				 sec (including partition keys)
-			   - The data capacity of your stream is a function of the number of shards that you specify for the stream. The total capacity of the stream is the sum of the capacities of 			     its shards.
+			   - 5 transactions per sec for reads, up to a max total data read rate of 2 MB per sec abd up to 1000 records per sec for writes, up to a max total data write of 1 MB per sec (including partition keys)
+			   - The data capacity of your stream is a function of the number of shards that you specify for the stream. The total capacity of the stream is the sum of the capacities of its shards.
 
-			2. Kinesis Firehose: Kinesis Firehose has no data persistence, however it processes the data using Lambda and stores it in S3, DynamoDB, RedShift, EMR, Amazon Elasticsearch 			   Service, and Splunk, enabling near real-time analytics with existing business intelligence tools and dashboards you’re already using today.
+			2. Kinesis Firehose: Kinesis Firehose has no data persistence, however it processes the data using Lambda and stores it in S3, DynamoDB, RedShift, EMR, Amazon Elasticsearch Service, and Splunk, enabling near real-time analytics with existing business intelligence tools and dashboards you’re already using today.
 
 			3. Kinesis Analytics: Works with Kinesis Streams and Kinesis Analytics to analyse the data on the fly.
 
@@ -2570,7 +2575,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 			You must choose the most relevant service.
 
 	** Web Identity Federation & Cognito (Exam Tips)
-		- Web Identity Federation lets you give your users access to AWS resources after they have successfully authenticated with a web-based identity provider such as Apple, Google and 		  Facebook. Following successful authentication, the user receives an authentication code from the Web ID provider, which they can trade for temporary AWS security credentials.
+		- Web Identity Federation lets you give your users access to AWS resources after they have successfully authenticated with a web-based identity provider such as Apple, Google and Facebook. Following successful authentication, the user receives an authentication code from the Web ID provider, which they can trade for temporary AWS security credentials.
 
 		- Amazon Cognito provides Web Identity Federation with the following features
 			- Sign-up and sign-in to your apps
@@ -2581,7 +2586,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 
 		- The user authenticates first with the Web ID Provider and receives an authentication token, which is exchanged for temporary AWS credentials allowing them to assume an IAM role.
 
-		- Cognito is an Identity Broker which handles interaction between your applications and the Web ID provide (You don't need to write your own code to do this)
+		- Cognito is an Identity Broker which handles interaction between your applications and the Web ID provided (You don't need to write your own code to do this)
 
 		- User pool is user based, It handles things like user registration, authentication and account recovery
 
@@ -2609,15 +2614,15 @@ There is no charge for creating a placement group" and "The name of your placeme
 		  This could result in the same message being delivered twice.
 		- Visibility timeout maximum is 12 hours.
 		- SQS guarantees that your messages will be processed at least once.
-		- Amazon SQS long polling is a way to retrieve messages from your Amazon SQS queues. While the regular short polling returns immediately (even if the message queue being 		  		  polled is empty) , long polling doesn't return a response until a message arrives in the message queue, or the long poll times out.
+		- Amazon SQS long polling is a way to retrieve messages from your Amazon SQS queues. While the regular short polling returns immediately (even if the message queue being polled is empty) , long polling doesn't return a response until a message arrives in the message queue, or the long poll times out.
 
 		SWF vs SQS:
 			- SQS has a retention period of 14 days; with SWF, workflow executions can last up to 1 year.
 			- Amazon SWF is a task-oriented API. whereas Amazon SQS offers a message-oriented API.
-			- Amazon SWF ensures that a task is assigned only once and is never duplicated. With Amazon SQS, you need to handle duplicated messages and may also need to ensure that a 			  message is processed only once.
-			- Amazon SWF keeps track of all the tasks and events in an application, With Amazon SQS, you need to implement your own application-level tracking, especially if your 			  application uses multiple queues
+			- Amazon SWF ensures that a task is assigned only once and is never duplicated. With Amazon SQS, you need to handle duplicated messages and may also need to ensure that a  message is processed only once.
+			- Amazon SWF keeps track of all the tasks and events in an application, With Amazon SQS, you need to implement your own application-level tracking, especially if your  application uses multiple queues
 		SWF Actors:
-			1. Workflow Starters: An application that can initiate (start) a workflow. Could be your e-commerce website following the placement of order or a mobile app searching for 			   business.
+			1. Workflow Starters: An application that can initiate (start) a workflow. Could be your e-commerce website following the placement of order or a mobile app searching for business.
 			2. Deciders: Control the flow of activity tasks in a workflow execution. If something has finished (or failed) in a workflow, a Decider decides what to do next.
 			3. Activity Workers: Carry out the activity tasks.
 
@@ -2635,7 +2640,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 
 		Elastic Transcoder - Exam Tips
 			- Media Transcoder in the cloud.
-			- Convert Media files from their original source format in different formats that will play on smartphones, tables, PCS etc.
+			- Convert Media files from their original source format in different formats that will play on smartphones, tablets, PCS etc.
 			- Provides transcoding presets for popular output formats, which means that you don't need to guess about which settings work best on particular devices.
 			- Pay based on the minutes that you transcode and the resolution at which you transcode.
 
@@ -2652,10 +2657,10 @@ There is no charge for creating a placement group" and "The name of your placeme
 			1. Kinesis Streams: Stores data in Shards. (Retention from 24 hours to 7 days). EC2 instances read this data and store it in S3, DynamoDB, RedShift and EMR.
 
 			   Kinesis Stream consists of Shards (not imp for the exam)
-			   - 5 transactions per sec for reads, up to a mac total data read rate of 2 MB per sec abd up to 1000 records per sec for writes, up to a mac total data write of 1 MB per 				 sec (including partition keys)
-			   - The data capacity of your stream is a function of the number of shards that you specify for the stream. The total capacity of the stream is the sum of the capacities of 			     its shards.
+			   - 5 transactions per sec for reads, up to a max total data read rate of 2 MB per sec and up to 1000 records per sec for writes, up to a max total data write of 1 MB per sec (including partition keys)
+			   - The data capacity of your stream is a function of the number of shards that you specify for the stream. The total capacity of the stream is the sum of the capacities of its shards.
 
-			2. Kinesis Firehose: Kinesis Firehose has no data persistence, however it processes the data using Lambda and stores it in S3, DynamoDB, RedShift, EMR, Amazon Elasticsearch 			   Service, and Splunk, enabling near real-time analytics with existing business intelligence tools and dashboards you’re already using today.
+			2. Kinesis Firehose: Kinesis Firehose has no data persistence, however it processes the data using Lambda and stores it in S3, DynamoDB, RedShift, EMR, Amazon Elasticsearch Service, and Splunk, enabling near real-time analytics with existing business intelligence tools and dashboards you’re already using today.
 
 			3. Kinesis Analytics: Works with Kinesis Streams and Kinesis Analytics to analyse the data on the fly.
 
@@ -2717,7 +2722,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 		- FIPS 140-2 level 3 (Exam Scenario: if you see FIPS 140-2 level 3 - answer is CloudHSM)
 		- Level 2 is KMS (need to show evidence of tampering)
 		- Difference between KMS and CloudHSM - We manage our keys
-		- Difference between KMS (Multi Tenant) and CloudHSM (Single Tenant, dedicate h/w, Mutli-AZ cluster)
+		- Difference between KMS (Multi Tenant) and CloudHSM (Single Tenant, dedicated h/w, Mutli-AZ cluster)
 		- Runs within a VPC in your account
 		- Industry-standard APIs - no AWS APIs
 		- PKCS#11
@@ -2809,10 +2814,10 @@ There is no charge for creating a placement group" and "The name of your placeme
 					- Enable security groups for EC2 and ENIs
 
 	** AWS WAF & AWS Shield (Exam Tips)
-			- What us AWS WAF? To prevent Cross scripting or SQL injection
-				1. AWS WAF is a web application firewall that helps protect your web application from common web exploits that could affect application availability, compromise security, 				   or consume excessive resources
+			- What is AWS WAF? To prevent Cross scripting or SQL injection
+				1. AWS WAF is a web application firewall that helps protect your web application from common web exploits that could affect application availability, compromise security, or consume excessive resources
 			- What is AWS Shield - to prevent DDOS
-				1. AWS Shield is a managed DDOS protection service that safeguards web applications running on AWS. AWS Shield provided always-on detection and automatic inline 				   mitigations that minimise application downtime and latency, so there is no need to engage AWS support to benefit from DDOS protection.
+				1. AWS Shield is a managed DDOS protection service that safeguards web applications running on AWS. AWS Shield provided always-on detection and automatic inline mitigations that minimise application downtime and latency, so there is no need to engage AWS support to benefit from DDOS protection.
 			- There are two tiers of AWS shield - Standard and Advanced.
 			- Advanced costs $3K per month per org.
 			- Only Advanced offers automated application layer monitoring.
@@ -2824,7 +2829,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 					- 400,000 GB-seconds per month free, up to 3.2 million seconds of compute time*
 					- $0.00001667 for every GB-second used thereafter
 				3. Additional Charges
-					- You may incur additional charges if your lambda functions uses other AWS services or transfers data. For example, If your lambda function reads and writes data to 					  or from Amazon S3, you will be billed for the read/write requests and the data stored in Amazon S3
+					- You may incur additional charges if your lambda functions uses other AWS services or transfers data. For example, If your lambda function reads and writes data to or from Amazon S3, you will be billed for the read/write requests and the data stored in Amazon S3
 
 ==========================================================================================================================================================================================
 * Serverless
