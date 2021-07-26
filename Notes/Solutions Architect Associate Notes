@@ -617,9 +617,19 @@ it's locked down, it's not public and making objects public is not that easy. Yo
 	7. Termination protection is turned off by default, you must turn it on.
 	8. On an EBS-backed instance, the default action is for the root EBS volume to be deleted when the instance is terminated. Any additional EBS volumes by default won't be deleted.
 	9. EBS Root volumes of your DEFAULT AMI's CAN be encrypted. You can also use a third party tool (such as bit locker etc) to encrypt the root volume, or this can be done when creating AMI's (lab to follow) in the AWS console or using the API.
- 10. Additional volumes can be encrypted as well.
+ 	10. Additional volumes can be encrypted as well.
+	11. When you launch a new EC2 instance, the EC2 service attempts to place the instance in such a way that all of your instances are spread out across underlying hardware to minimize correlated failures. You can use placement groups to influence the placement of a group of interdependent instances to meet the needs of your workload. Depending on the type of workload, you can create a placement group using one of the following placement strategies:
 
-- EC2 Exam Tips: Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provided resizable compute capacity in the cloud. Amazon EC2 reduces the time required to obtain and boot new server instances to minutes, allowing you to quickly scale capacity, both up and down, as your computing requirements change.
+		Cluster – packs instances close together inside an Availability Zone. This strategy enables workloads to achieve the low-latency network performance necessary for tightly-coupled node-to-node communication that is typical of HPC applications.
+
+		Partition – spreads your instances across logical partitions such that groups of instances in one partition do not share the underlying hardware with groups of instances in different partitions. This strategy is typically used by large distributed and replicated workloads, such as Hadoop, Cassandra, and Kafka.
+
+		Spread – strictly places a small group of instances across distinct underlying hardware to reduce correlated failures.
+	12. There is a vCPU-based On-Demand Instance limit per region which is why subsequent requests failed. Just submit the limit increase form to AWS and retry the failed requests once approved.
+	13. The AWS Nitro System is the underlying platform for the latest generation of EC2 instances that enables AWS to innovate faster, further reduce the cost of the customers, and deliver added benefits like increased security and new instance types.
+	
+	
+- EC2 Exam Tips: Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides resizable compute capacity in the cloud. Amazon EC2 reduces the time required to obtain and boot new server instances to minutes, allowing you to quickly scale capacity, both up and down, as your computing requirements change.
 	1. On Demand: Allows you to pay a fixed rate by the hour (or by the second) with no commitment.
 	2. Reserved: Provides you with a capacity reservation and offer a significant discount on the hourly charge for an instance. Contract Terms are 1 year or 3 year terms.
 	3. Spot: Enables you to bid whatever price you want for instance capacity, providing for even greater savings if your application have flexible start and end times.
@@ -629,7 +639,7 @@ it's locked down, it's not public and making objects public is not that easy. Yo
 * Security Groups Exam Tips:
 	1. All inbound traffic is blocked by default - so we enable some IP and ports using Security Groups.
 	2. All outbound traffic is allowed.
-	3. Security Groups are STATEFUL, when you create an inbound rule and an outbound rule is automatically created.
+	3. Security Groups are STATEFUL, when you create an inbound rule, an outbound rule is automatically created.
 	4. NACL's are STATELESS, when you create an inbound rule and an outbound rule is not automatically created.
 	5. You CANNOT block specific IP's/Port's using Security Groups instead use Network Access Control Lists.
 	6. You can have any number of EC2 instances within a security group.
@@ -894,6 +904,12 @@ Exam Tips:
        11. Alarms: Allows you to set Alarms that notify you when particular thresholds are hit.
        12. Events: CloudWatch Events helps you to respond to state changes in your AWS resources.
        13. Logs - CloudWatch Logs helps you to aggregate, monitor and store logs.
+       14. Amazon CloudWatch has available Amazon EC2 Metrics for you to use for monitoring CPU utilization, Network utilization, Disk performance, and Disk Reads/Writes. In case you need to monitor the below items, you need to prepare a custom metric using a Perl or other shell script, as there are no ready to use metrics for:
+		a. Memory utilization
+		b. Disk swap utilization
+		c. Disk space utilization
+		d. Page file utilization
+		e. Log collection
 
 ** CloudTrail vs CloudWatch
 	- CloudWatch monitors performance.
@@ -2329,6 +2345,11 @@ For applications running on Amazon EC2, you can use profile credentials specific
 		AWS Network Costs
 				- Use private IP addresses over public IP addresses to save on costs. This then utilizes the AWS backbone network.
 				- If you want to cut all network costs, group your EC2 instances in the same AZ and use private IP addresses. This will be cost-free, but make sure to keep in mind single 				  point of failures.
+
+		Instance metadata 
+				- is the data about your instance that you can use to configure or manage the running instance. You can get the instance ID, public keys, public IP address and many other information from the instance metadata by firing a URL command in your instance to this URL:
+
+http://169.254.169.254/latest/meta-data/
 
 
 ==========================================================================================================================================================================================
