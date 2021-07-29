@@ -3017,5 +3017,11 @@ Amazon S3 Select is designed to help analyze and process data within an object i
 19. NACLs act on the subnet level, while security groups act on the instance level.
 20. You can only have one Internet Gateway per VPC.
 21. In a custom VPC with new subnets in each AZ, there is a route within the route table that supports communication across all subnets/AZs. Additionally, it has a Default SG with an "allow" rule: all traffic, all protocols, all ports, from resource using this default security group.
+22. Setting up a cross account IAM role is currently the only method that will allow IAM users to access cross account S3 buckets both programmatically and via the AWS console.
+23. Power User Access allows access to all AWS services except the management of groups and users within IAM.
+24. EBS snapshots use incremental backups and are stored in S3. Restores can be done from any of the snapshots. The original full snapshot can be safely deleted without impacting the ability to use the other related incremental backups.
+25. Since the additional disk does not contain the operating system, you can detach it in the EC2 Console while the instance is running. However, any data on that drive would become inaccessible, and possibly cause problems for the EC2 instance
+26. You cannot delete a snapshot of the root device of an EBS volume used by a registered AMI.
+27. 
 
 
