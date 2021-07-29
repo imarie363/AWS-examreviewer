@@ -1859,8 +1859,7 @@ For applications running on Amazon EC2, you can use profile credentials specific
 			- Multivalue Answer Routing
 
   ** Route 53 Simple Routing Policy - LAB
-  		- You can only have one record with multiple IP addresses. If you specify multiple values in a record, Route 53 returns all values to the user in a random order.
-		  	You can't have any health checks.
+  		- You can only have one record with multiple IP addresses. If you specify multiple values in a record, Route 53 returns all values to the user in a random order. You can't have any health checks.
 
   ** Route 53 Weighted Routing Policy - LAB
   		- Allows you to split your traffic based on different weights assigned.
@@ -1873,12 +1872,10 @@ For applications running on Amazon EC2, you can use profile credentials specific
 
   ** Route 53 Latency-Based Routing Policy - LAB
   		- Allows you to route your traffic based on the lowest network latency for your end user (ie which region will give them the fastest response time)
-			- To use latency-based routing, you create a latency resource record set for the Amazon EC2 (or ELB) resource in each region that hosts your website.
-		  	When Amazon Route 53 receives a query for your site, it selects the latency resource record set for the region that gives the user the lowest latency.
-				Route 53 then responds with the value associated with that resource record set.
+			- To use latency-based routing, you create a latency resource record set for the Amazon EC2 (or ELB) resource in each region that hosts your website. When Amazon Route 53 receives a query for your site, it selects the latency resource record set for the region that gives the user the lowest latency. Route 53 then responds with the value associated with that resource record set.
 
   ** Route 53 Failover Routing Policy - LAB
-  		- Failover Routing policies are used when you want to create an active/passive set-up. For Example: you may want your primary site to be in EU-WEST-2 and your secondary DR site in 				AP-SOUTHEAST-2
+  		- Failover Routing policies are used when you want to create an active/passive set-up. For Example: you may want your primary site to be in EU-WEST-2 and your secondary DR site in AP-SOUTHEAST-2
 			- Route 53 will monitor the health of your primary site using a health check.
 			- A health check monitors the health of your end points.
 
@@ -1891,8 +1888,7 @@ For applications running on Amazon EC2, you can use profile credentials specific
 		- To use Geoproximity Routing, you must use Route 53 traffic flow.
 
   ** Route 53 Multivalue Answer Routing Policy - LAB
-        - Multivalue Answer Routing lets you configure Amazon Route 53 to return multiple values, such as IP addresses for your web servers, in response to DNS queries.
-		  You can specify multiple value for almost any record, but multivalue answer routing also lets you check the health of each resource, so Route 53 returns only values from healthy resources.
+        - Multivalue Answer Routing lets you configure Amazon Route 53 to return multiple values, such as IP addresses for your web servers, in response to DNS queries. You can specify multiple value for almost any record, but multivalue answer routing also lets you check the health of each resource, so Route 53 returns only values from healthy resources.
 		- This is similar to simple routing however it allows you to put health checks on each record set.
 
   ** DNS Summary/Route 53 Exam Tips:
@@ -1919,12 +1915,12 @@ For applications running on Amazon EC2, you can use profile credentials specific
 		- You can set health checks on individual record sets.
 		- If a recordset fails a health check it will be removed from Route53 until it passes the health check.
 		- You can set SNS notification to alert you if a health check is failed.
-		- Alias Records have special functions that are not present in other DNS servers. Their main function is to provide special functionality and integration into AWS services. 		  Unlike CNAME records, they can also be used at the Zone Apex, where CNAME records cannot. Alias Records can also point to AWS Resources that are hosted in other accounts by manually entering the ARN
+		- Alias Records have special functions that are not present in other DNS servers. Their main function is to provide special functionality and integration into AWS services. Unlike CNAME records, they can also be used at the Zone Apex, where CNAME records cannot. Alias Records can also point to AWS Resources that are hosted in other accounts by manually entering the ARN.
 
 		- Important
-			The DNS protocol does not allow you to create a CNAME record for the top node of a DNS namespace, also known as the zone apex. For example, if you register the DNS name 			example.com, the zone apex is example.com. You cannot create a CNAME record for example.com, but you can create CNAME records for www.example.com, newproduct.example.com, and so on.
+			The DNS protocol does not allow you to create a CNAME record for the top node of a DNS namespace, also known as the zone apex. For example, if you register the DNS name example.com, the zone apex is example.com. You cannot create a CNAME record for example.com, but you can create CNAME records for www.example.com, newproduct.example.com, and so on.
 
-			In addition, if you create a CNAME record for a subdomain, you cannot create any other records for that subdomain. For example, if you create a CNAME for www.example.com, you 			cannot create any other records for which the value of the Name field is www.example.com.
+			In addition, if you create a CNAME record for a subdomain, you cannot create any other records for that subdomain. For example, if you create a CNAME for www.example.com, you 	cannot create any other records for which the value of the Name field is www.example.com.
 
 		- You have an enterprise solution that operates Active-Active with facilities in Regions US-West and India. Due to growth in the Asian market you have been directed by the CTO to ensure that only traffic in Asia (between Turkey and Japan) is directed to the India Region. Which of these will deliver that result?
 		Answers:
@@ -1967,12 +1963,12 @@ For applications running on Amazon EC2, you can use profile credentials specific
 ==========================================================================================================================================================================================
 
   ** VPC Overview
-  		- Amazon VPC lets you provision a logically isolated section of the AWS Clous where you can launch AWS resources in a virtual network that you define.
+  		- Amazon VPC lets you provision a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define.
 		  You have complete control over your virtual networking environment, including selection of your own IP address range, creation of subnets, and configuration of route tables and network gateways
 		- Additionally, you can create a Hardware Virtual Private Network (VPN) connection between your corporate datacenter and your VPC and leverage the AWS cloud as extension of your corporate datacenter.
 		- Network ACL's are Stateless, they facilitate allow and deny. When you open up a port inbound, it doesn't automatically open up a port on outbound.
 		- Security Group are Stateful, they only facilitate allow (no deny)
-		- Internet Assigned Number Authority actually has 3 different sets of IP Addresses that are reserver for private IP address range
+		- Internet Assigned Number Authority actually has 3 different sets of IP Addresses that are reserved for private IP address range
 			- 10.0.0.0 - 10.255.255.255 (10/8 prefix)
 			- 172.16.0.0 - 172.31.255.255 (172.16/12 prefix)
 			- 192.168.0.0 - 192.168.255.255 (192.168/16 prefix)
@@ -1980,7 +1976,7 @@ For applications running on Amazon EC2, you can use profile credentials specific
 			- Launch instances into a subnet of your choosing
 			- Assign custom IP address range in each subnet
 			- Configure route tables between subnets
-			- Create internet gateway and attach it to our VPC
+			- Create internet gateway and attach it to your VPC
 			- Much better security control over your AWS resources
 			- Instance security groups
 			- Subnet network access control lists (ACL's)
@@ -2004,7 +2000,7 @@ For applications running on Amazon EC2, you can use profile credentials specific
 			- NO TRANSITIVE PEERING (Meaning: VPCA peered to VPCB and VPCC, so VPCB can't talk to VPCC through VPCA, instead a VPC peering need to be established between VPCB and VPCC for the communication)
 
 	** Create Your Own Custom VPC: Part 1 - Demo
-		- We can only have 1 internet gateway attached one VPC.
+		- We can only have 1 internet gateway attached per one VPC.
 
     ** Remember the following
 		- When you create a VPC, it will create a default Route Table, Network Access Control List(NACL) and a default Security Group.
@@ -2036,7 +2032,7 @@ For applications running on Amazon EC2, you can use profile credentials specific
 				  - If you have resources in multiple AZ's and they share one NAT gateway, in the event that the NAT gateway's AZ is down, resources in the other AZ lose internet access, create a NAT gateway in each AZ and configure your routing to ensure that resources use the NAT gateway in the same AZ.
 
   ** Network Access Control Lists vs. Security Groups - Demo
-  		- Your VPC automatically comes with a default ACL, and by default it allows all inbound and outbound traffic.
+  		  - Your VPC automatically comes with a default ACL, and by default it allows all inbound and outbound traffic.
 		  - You can create custom network ACL's. By default, each custom network ACL denies all inbound and outbound traffic.
 		  - Each subnet in your VPC must be associate with a network ACL, if you don't explicitly associate a subnet with a network ACL, the subnet is automatically associated with the default network ACL.
 		  - Block IP addresses using network ACL's and not security groups.
@@ -2053,7 +2049,7 @@ For applications running on Amazon EC2, you can use profile credentials specific
   		  - VPC Flow Logs is a feature that enables you to capture information about the IP traffic going to and from network interfaces in your VPC.
 		    Flow log data is stored using Amazon CloudWatch Logs/S3. After you've created a flow log, you can view and retrieve its data in Amazon CloudWatch Logs/S3.
 		  - Flow Logs can be created at 3 levels
-		  	1. VPC
+		  	  1. VPC Level
 			  2. Subnet Level
 			  3. Network Interface Level
 
@@ -2062,9 +2058,9 @@ For applications running on Amazon EC2, you can use profile credentials specific
 			  2. You can tag flow logs.
 			  3. After you have created a flow log, you cannot change its configuration; for example: you can't associate a different IAM role with the flow log.
 			  4. Not all IP Traffic is monitored
-			  		- Traffic generated by instances when they contact the Amazon DNS server. If you use your own DNS server, then all traffic to that DNS server is logged.
+			  		        - Traffic generated by instances when they contact the Amazon DNS server. If you use your own DNS server, then all traffic to that DNS server is logged.
 						- Traffic generated by a windows instance for Amazon Windows license activation.
-						- Traffic to and fro from 169.254.169.254 for instance metadata.
+						- Traffic to and from 169.254.169.254 for instance metadata.
 						- DHCP traffic.
 						- Traffic to the reserved IP address for the default VPC router.
 
@@ -2078,8 +2074,7 @@ For applications running on Amazon EC2, you can use profile credentials specific
 			  - You cannot use a NAT Gateway as a Bastion host.
 
 	** Direct Connect
-			- AWS Direct connect is a cloud service solution that makes it easy to establish a dedicated network connection from your on-premises to AWS.
-			  Using AWS Direct connect, you can establish a private connectivity between AWS and your datacenter, office or colocation environment, which in many cases can reduce your network costs, increase bandwidth, and provide a more consistent network experience than internet-based connections.
+			- AWS Direct connect is a cloud service solution that makes it easy to establish a dedicated network connection from your on-premises to AWS. Using AWS Direct connect, you can establish a private connectivity between AWS and your datacenter, office or colocation environment, which in many cases can reduce your network costs, increase bandwidth, and provide a more consistent network experience than internet-based connections.
 			- Direct Connect directly connects your data center to AWS
 			- Useful for high throughput workloads (ie lots of network traffic)
 			- or If you need a stable and reliable secure connection.
@@ -2107,8 +2102,7 @@ For applications running on Amazon EC2, you can use profile credentials specific
 
 			  2. Accelerator - An accelerator directs traffic to optimal endpoints over the AWS global network to improve the availability and performance of your internet applications.
 
-			  3. DNS Name - Global Accelerator assigns each accelerator a default DNS name - similar to somename.domain.com - that points to the static IP addresses that Global Accelerator assigns to you.
-			  Depending on the use case, you can use your accelerator's static IP address or DNS name to route traffic to your accelerator, or set up DNS records to route traffic using your own custom domain name.
+			  3. DNS Name - Global Accelerator assigns each accelerator a default DNS name - similar to somename.domain.com - that points to the static IP addresses that Global Accelerator assigns to you. Depending on the use case, you can use your accelerator's static IP address or DNS name to route traffic to your accelerator, or set up DNS records to route traffic using your own custom domain name.
 
 			  4. Network Zone - A network zone services the static IP addresses for your accelerator from a unique IP subnet. Similar to an AWS AZ, a network zone is an isolated unit with its own set of physical infrastructure.
 			  When you configure an accelerator, by default, Global Accelerator allocates two IPv4 addresses for it. If one IP address from a network zone becomes unavailable due to IP address blocking by certain client networks or network disruptions, client applications can retry on the healthy static IP address from the other isolated network zone.
@@ -2140,10 +2134,10 @@ For applications running on Amazon EC2, you can use profile credentials specific
 				- You can control weighting to individual end points using weights.
 
 	** VPC Endpoints (Exam Tips)
-		- A VPC endpoint enables you to privately connect your VPC to supported AWS services and VPC endpoint services powered by private link without requiring an internet gateway and Nat device, a VPN connection, or an AWS Direct Connect connection.
+		- A VPC endpoint enables you to privately connect your VPC to supported AWS services and VPC endpoint services powered by private link without requiring an internet gateway and Nat device, a VPN connection, or an AWS Direct Connect connection. 
+		- A VPC endpoint enables you to privately connect your VPC to supported AWS services and VPC endpoint services powered by PrivateLink without requiring an Internet gateway, NAT device, VPN connection, or AWS Direct Connect connection. Instances in your VPC do not require public IP addresses to communicate with resources in the service. Traffic between your VPC and the other services does not leave the Amazon network.
 
-		Instances in your VPC do not require public IP addresses to communicate with resources in the service. So traffic between your VPC and other services does not leave the
-	Amazon network.
+		Instances in your VPC do not require public IP addresses to communicate with resources in the service. So traffic between your VPC and other services does not leave the Amazon network.
 
 	Endpoints are virtual devices, and they are horizontally scaled, redundant, and highly available VPC components that allow communication between instances in your VPC and services without imposing availability, risk, or bandwidth constraints on your network traffic.
 
@@ -2152,11 +2146,10 @@ For applications running on Amazon EC2, you can use profile credentials specific
 			2. Gateway Endpoints
 
 		Exam Tips:
-			  - An Interface endpoint is an elastic network interface with a private IP address that serves as an entry point for traffic destined to a supported service.
-			    Many services such as Amazon API Gateway, AWS Cloud Watch, Amazon CloudFormation..etc are supported and many more will be added.
+			  - An Interface endpoint is an elastic network interface with a private IP address that serves as an entry point for traffic destined to a supported service. Many services such as Amazon API Gateway, AWS Cloud Watch, Amazon CloudFormation..etc are supported and many more will be added.
 			  - Currently Gateway Endpoints Support
 			  	1. Amazon S3
-				  2. Amazon DynamoDB
+				2. Amazon DynamoDB
 
 	** VPC Private Link
 		- Sharing applications across VPC's - To open our applications up to other VPC's, we can either
@@ -2188,8 +2181,7 @@ For applications running on Amazon EC2, you can use profile credentials specific
 		- Support IP Multicast (not supported by any other AWS service)
 
 		Exam Tips:
-			- If you're given a scenario question where it's talking about how you can simplify n/w topology, may be hundreds of VPN connections coming in, direct connect connections,
-			  a whole bunch of VPC peering going on, and you also need to support Multicast, think about Transit Gateway, which uses Hub and Spoke model.
+			- If you're given a scenario question where it's talking about how you can simplify n/w topology, may be hundreds of VPN connections coming in, direct connect connections, a whole bunch of VPC peering going on, and you also need to support Multicast, think about Transit Gateway, which uses Hub and Spoke model.
 
 	** AWS VPN CloudHub
 		- If you have multiple sites, each with its own VPN connection, you can use AWS VPN CloudHub to connect those sites together.
@@ -2259,7 +2251,7 @@ For applications running on Amazon EC2, you can use profile credentials specific
 				4. Not all IP Traffic is monitored
 					- Traffic generated by instances when they contact the Amazon DNS server. If you use your own DNS server, than all traffic to that DNS server is logged.
 					- Traffic generated by a windows instance for Amazon Windows license activation.
-					- Traffic to and fro from 169.254.169.254 for instance metadata.
+					- Traffic to and from 169.254.169.254 for instance metadata.
 					- DHCP traffic.
 					- Traffic to the reserved IP address for the default VPC router.
 
@@ -2270,9 +2262,9 @@ For applications running on Amazon EC2, you can use profile credentials specific
 
 		Direct Connect
 			- AWS Direct connect is a cloud service solution that makes it easy to establish a dedicated network connection from your on-premises to AWS.
-			  Using AWS Direct connect, you can establish a private connectivity between AWS and your datacenter, office or colocation environment, which in many cases can reduce your 			  network costs, increase bandwidth, and provide a more consistent network experience than internet-based connections.
+			  Using AWS Direct connect, you can establish a private connectivity between AWS and your datacenter, office or colocation environment, which in many cases can reduce your network costs, increase bandwidth, and provide a more consistent network experience than internet-based connections.
 			- Direct Connect directly connects your data center to AWS
-			- Useful for high throughput workloads (ir lots of network traffic)
+			- Useful for high throughput workloads (or lots of network traffic)
 			- or If you need a stable and reliable secure connection.
 
 		Exam question: A VPN connection keeps dropping out because the amount of throughput, and what kinds of things could you do to solve that?
@@ -2289,28 +2281,25 @@ For applications running on Amazon EC2, you can use profile credentials specific
 
 		Global Accelerator
 				- AWS Global Accelerator is a service which you create accelerators to improve availability and performance of your applications for local and global users.
-				- Global Accelerator directs traffic to optimal endpoints over the AWS Global network. This improves the availability and performance of your internet applications that 				  are used by a global audience.
+				- Global Accelerator directs traffic to optimal endpoints over the AWS Global network. This improves the availability and performance of your internet applications that are used by a global audience.
 				- By default Global Accelerator gives you two static IP addresses that you associate with your accelerator or bring your own.
 				- You can increase or reduce the percentage of traffic that would be otherwise directed to an endpoint group by adjusting a setting called a traffic dial.
 				- You can control traffic using traffic dials. This is done within the endpoint group.
 				- You can control weighting to individual end points using weights.
 
 		VPC Endpoints
-				- A VPC endpoint enables you to privately connect your VPC to supported AWS services and VPC endpoint services powered by private link without requiring an internet 				  gateway and Nat device, a VPN connection, or an AWS Direct Connect connection.
+				- A VPC endpoint enables you to privately connect your VPC to supported AWS services and VPC endpoint services powered by private link without requiring an internet gateway and Nat device, a VPN connection, or an AWS Direct Connect connection.
 
-				- Instances in your VPC do not require public IP addresses to communicate with resources in the service. So traffic between your VPC and other services does not leave the
-				  Amazon network.
+				- Instances in your VPC do not require public IP addresses to communicate with resources in the service. So traffic between your VPC and other services does not leave the Amazon network.
 
-				- Endpoints are virtual devices, and they are horizontally scaled, redundant, and highly available VPC components that allow communication between instances
-				  in your VPC and services without imposing availability, risk, or bandwidth constraints on your network traffic.
+				- Endpoints are virtual devices, and they are horizontally scaled, redundant, and highly available VPC components that allow communication between instances in your VPC and services without imposing availability, risk, or bandwidth constraints on your network traffic.
 
 				- Two types of VPC endpoints.
 					1. Interface Endpoints
 					2. Gateway Endpoints
 
 				Exam Tips:
-					  - An Interface endpoint is an elastic network interface with a private IP address that serves as an entry point for traffic destined to a supported service.
-					    Many services such as Amazon API Gateway, AWS Cloud Watch, Amazon CloudFormation..etc are supported and many more will be added.
+					  - An Interface endpoint is an elastic network interface with a private IP address that serves as an entry point for traffic destined to a supported service. Many services such as Amazon API Gateway, AWS Cloud Watch, Amazon CloudFormation..etc are supported and many more will be added.
 					  - Currently Gateway Endpoints Support
 					  	1. Amazon S3
 						2. Amazon DynamoDB
@@ -2331,7 +2320,7 @@ For applications running on Amazon EC2, you can use profile credentials specific
 				- Support IP Multicast (not supported by any other AWS service)
 
 				Exam Tips:
-					- If you're given a scenario question where it's talking about how you can simplify n/w topology, may be hundreds of VPN connections coming in, direct connect 					  connections, a whole bunch of VPC peering going on, and you also need to support Multicast, think about Transit Gateway, which uses Hub and Spoke model.
+					- If you're given a scenario question where it's talking about how you can simplify n/w topology, may be hundreds of VPN connections coming in, direct connect connections, a whole bunch of VPC peering going on, and you also need to support Multicast, think about Transit Gateway, which uses Hub and Spoke model.
 
 		AWS VPN CloudHub
 				- If you have multiple sites, each with its own VPN connection, you can use AWS VPN CloudHub to connect those sites together.
@@ -2344,7 +2333,7 @@ For applications running on Amazon EC2, you can use profile credentials specific
 
 		AWS Network Costs
 				- Use private IP addresses over public IP addresses to save on costs. This then utilizes the AWS backbone network.
-				- If you want to cut all network costs, group your EC2 instances in the same AZ and use private IP addresses. This will be cost-free, but make sure to keep in mind single 				  point of failures.
+				- If you want to cut all network costs, group your EC2 instances in the same AZ and use private IP addresses. This will be cost-free, but make sure to keep in mind single point of failures.
 
 		Instance metadata 
 				- is the data about your instance that you can use to configure or manage the running instance. You can get the instance ID, public keys, public IP address and many other information from the instance metadata by firing a URL command in your instance to this URL:
@@ -2565,7 +2554,7 @@ http://169.254.169.254/latest/meta-data/
 
 	** Elastic Transcoder - Exam Tips
 		- Media Transcoder in the cloud.
-		- Convert Media files from their original source format in different formats that will play on smartphones, tables, PCS etc.
+		- Convert Media files from their original source format in different formats that will play on smartphones, tablets, PCS etc.
 		- Provides transcoding presets for popular output formats, which means that you don't need to guess about which settings work best on particular devices.
 		- Pay based on the minutes that you transcode and the resolution at which you transcode.
 
@@ -3000,3 +2989,33 @@ http://169.254.169.254/latest/meta-data/
 					AWS Config
 					AWS IoT Events
 ==========================================================================================================================================================================================
+DESIGN RESILIENT ARCHITECTURES notes: 
+========================
+==================================================================================================================================================================
+
+1. Amazon Elastic Compute Cloud (Amazon EC2) provides scalable computing capacity in the Amazon Web Services (AWS) Cloud. You can use Amazon EC2 to launch as many or as few virtual servers as you need, configure security and networking, and manage storage. Amazon EC2 enables you to scale up or down to handle changes in requirements or spikes in popularity, reducing your need to forecast traffic. RAID 0 configuration enables you to improve your storage volumes’ performance by distributing the I/O across the volumes in a stripe. Therefore, if you add a storage volume, you get the straight addition of throughput and IOPS. This configuration can be implemented on both EBS or instance store volumes. Since the main requirement in the scenario is storage performance, you need to use an instance store volume. It uses NVMe or SATA-based SSD to deliver high random I/O performance. This type of storage is a good option when you need storage with very low latency, and you don’t need the data to persist when the instance terminates.
+2. AWS Organizations offers policy-based management for multiple AWS accounts. With Organizations, you can create groups of accounts, automate account creation, apply and manage policies for those groups. Organizations enables you to centrally manage policies across multiple accounts, without requiring custom scripts and manual processes. It allows you to create Service Control Policies (SCPs) that centrally control AWS service use across multiple AWS accounts.
+3. Amazon Redshift Spectrum
+Amazon Redshift also includes Redshift Spectrum, allowing you to directly run SQL queries against exabytes of unstructured data in Amazon S3. No loading or transformation is required, and you can use open data formats, including Avro, CSV, Grok, ORC, Parquet, RCFile, RegexSerDe, SequenceFile, TextFile, and TSV. Redshift Spectrum automatically scales query compute capacity based on the data being retrieved, so queries against Amazon S3 run fast, regardless of data set size.
+4. Amazon Athena
+Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL expressions. Athena is serverless, so there is no infrastructure to manage, and you pay only for the queries you run. Athena is easy to use. Simply point to your data in Amazon S3, define the schema, and start querying using standard SQL expressions. Most results are delivered within seconds. With Athena, there’s no need for complex ETL jobs to prepare your data for analysis. This makes it easy for anyone with SQL skills to quickly analyze large-scale datasets.
+5. S3 Select
+Amazon S3 Select is designed to help analyze and process data within an object in Amazon S3 buckets, faster and cheaper. It works by providing the ability to retrieve a subset of data from an object in Amazon S3 using simple SQL expressions. Your applications no longer have to use compute resources to scan and filter the data from an object, potentially increasing query performance by up to 400%, and reducing query costs as much as 80%. You simply change your application to use SELECT instead of GET to take advantage of S3 Select.
+6. Cold HDD provides the lowest cost HDD volume and is designed for less frequently accessed workloads.
+7. AWS Storage Gateway connects an on-premises software appliance with cloud-based storage to provide seamless integration with data security features between your on-premises IT environment and the AWS storage infrastructure. You can use the service to store data in the AWS Cloud for scalable and cost-effective storage that helps maintain data security.
+8. ElastiCache improves the performance of your database through caching query results.
+9. Amazon EMR is a managed cluster platform that simplifies running big data frameworks, such as Apache Hadoop and Apache Spark, on AWS to process and analyze vast amounts of data. By using these frameworks and related open-source projects such as Apache Hive and Apache Pig, you can process data for analytics purposes and business intelligence workloads. Additionally, you can use Amazon EMR to transform and move large amounts of data into and out of other AWS data stores and databases such as Amazon Simple Storage Service (Amazon S3) and Amazon DynamoDB.
+10. The purpose of an egress-only internet gateway is to allow IPv6 based traffic within a VPC to access the internet, whilst denying any internet based resources to connection back into the VPC.
+11. Each subnet must reside entirely within one Availability Zone and cannot span across zones.
+12. A network zone services the static IP addresses for your accelerator from a unique IP subnet. Similar to an AWS Availability Zone, a network zone is an isolated unit with its own set of physical infrastructure. When you configure an accelerator, by default, Global Accelerator allocates two IPv4 addresses for it. If one IP address from a network zone becomes unavailable due to IP address blocking by certain client networks, or network disruptions, then client applications can retry on the healthy static IP address from the other isolated network zone.
+13. AWS customers are welcome to carry out security assessments or penetration tests against their AWS infrastructure without prior approval for 8 services only. You should request authorization for other simulated events.
+14. A Bastion host allows you to securely administer (via SSH or RDP) an EC2 instance located in a private subnet. Don't confuse Bastions and NATs, which allow outside traffic to reach an instance in a private subnet.
+15. Since an internet gateway is a highly available VPC component, only one is attachable to a custom VPC.
+16. You can have up to five Amazon VPCs per AWS account per AWS Region, but you can place a support request to increase the number
+17. An Elastic IP address is a public IPv4 address, which is reachable from the internet. If your instance does not have a public IPv4 address, you can associate an Elastic IP address with your instance to enable communication with the internet. For example, this allows you to connect to your instance from your local computer.
+18. An Application Load Balancer must be deployed into at least two Availability Zone subnets
+19. NACLs act on the subnet level, while security groups act on the instance level.
+20. You can only have one Internet Gateway per VPC.
+21. In a custom VPC with new subnets in each AZ, there is a route within the route table that supports communication across all subnets/AZs. Additionally, it has a Default SG with an "allow" rule: all traffic, all protocols, all ports, from resource using this default security group.
+
+
