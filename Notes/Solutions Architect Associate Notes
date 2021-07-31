@@ -126,13 +126,6 @@ Key Terminology for IAM:
 	Lab: We can encrypt the files in S3 by using AES-256 or AWS-KMS.
 	     Note: AWS-KMS is beyond the scope of this exam
 
-*  S3 Encryption Demo
-	1. Stores all versions of an object (including all writes and even if you delete an object)
-	2. Great backup tool.
-	3. Once enabled, Versioning cannot be disabled, only be suspended. You have to delete the bucket and create a new one.
-	4. Integrates with Lifecycle rules.
-	5. Versioning's MFA Delete capability, which uses multi-factor authentication, can be used to provide an additional layer of security.
-
 *  S3 Versioning Lab
 Imp:
 	1. With versioning enabled, when we upload a newer version of the file - the newer file's permission need to be made public. Older versions permissions remain the same.
@@ -256,7 +249,7 @@ Imp:
 * AWS organisations & Consolidated Billing - Exam Tips
 	1. Always enable multi-factor authentication on root account.
 	2. Always use a strong and complex password on root account.
-	3. Paying account should be used for billing purposes only. Do no deploy resources into the paying account.
+	3. Paying account should be used for billing purposes only. Do not deploy resources into the paying account.
 	4. Enable/Disable AWS services using Service Control Policies (SCP) either on OU or on individual accounts.
 
 * Lab - Sharing S3 buckets across accounts - Exam Tips:
@@ -301,10 +294,6 @@ Imp:
 	2. Origin - This is the origin of all the files that the CDN will distribute. This can be an S3 Bucket, an EC2 Instance, an Elastic Load Balancer or Route 53.
 	3. Distribution - This is the name given the CDN which consists of a collection of Edge locations.
 
-	2 types of distribution:
-	Web Distribution - Typically used for Websites
-	RTMP - Used for Media Streaming
-
 	Note:
 	1. Edge Locations are not just READ only - you can write them too. (ie Put an object on to them).
 	2. Objects are cached for the life of TTL (Time to live)
@@ -346,8 +335,7 @@ Imp:
 
 * Snowball
 	What is Snowball?
-		1. AWS Snowball is a PB-Scale data transport solution that uses secure appliances to transfer large amounts of data in and out of the AWS cloud. Think of it as a gigantic disk to move your data into AWS. Using Snowball addresses common challenges with large-scale data transfers including high network costs, long transfer times, and security concerns.
-Transferring data with snowball is simple, fast. Secure and can be as little as one-fifth the cost of high-speed internet.
+		1. AWS Snowball is a PB-Scale data transport solution that uses secure appliances to transfer large amounts of data in and out of the AWS cloud. Think of it as a gigantic disk to move your data into AWS. Using Snowball addresses common challenges with large-scale data transfers including high network costs, long transfer times, and security concerns. Transferring data with snowball is simple, fast. Secure and can be as little as one-fifth the cost of high-speed internet.
 
 		2. AWS Snowball Edge is a 100TB data transfer device with on-board storage and compute capabilities. You can use Snowball Edge to move large amounts of data into and out of AWS, as a temporary storage tier for large local datasets, or to support local workloads in remote or offline locations.
 
@@ -387,8 +375,7 @@ Transferring data with snowball is simple, fast. Secure and can be as little as 
 				- The volume interface presents your applications with disk volumes using the iSCSI block protocol.
 				- Data written to these volumes can be asynchronously backed up as point-in-time snapshots of your volumes, and stored in the cloud as Amazon EBS snapshots.
 				- Snapshots are incremental backups that capture only changed blocks. All snapshot storage is also compressed to minimise your storage charges.
-				- Stored Volumes let you store your primary data locally, while asynchronously backing up the data to AWS. Stored volumes provide your on-premises applications with low-latency access to their entire datasets, while providing durable, off-site backups. You can create storage volumes and mount them as iSCSI devices from your on-premises application servers.
-Data written to your stored volumes in stored on your on-premises storage hardware. This data is asynchronously backed up to Amazon Simple Storage Service (Amazon S3) in the form of Amazon Elastic Block Store (Amazon EBS) snapshots. 1 GB - 16 TB in size for Stored Volumes.
+				- Stored Volumes let you store your primary data locally, while asynchronously backing up the data to AWS. Stored volumes provide your on-premises applications with low-latency access to their entire datasets, while providing durable, off-site backups. You can create storage volumes and mount them as iSCSI devices from your on-premises application servers. Data written to your stored volumes in stored on your on-premises storage hardware. This data is asynchronously backed up to Amazon Simple Storage Service (Amazon S3) in the form of Amazon Elastic Block Store (Amazon EBS) snapshots. 1 GB - 16 TB in size for Stored Volumes.
 
 			2. Cached Volumes: Cached Volumes let you use Amazon Simple Storage Service (Amazon S3) as your primary data storage while retaining frequently accessed data locally in your storage. Cached volumes minimise the need to scale your on-premises storage infrastructure, while still providing your applications with low-latency access to their frequently accessed data. You can create storage volumes up to 32TB in size and attach to them as iSCSI devices from your on-premises application servers. Your gateway stores data that you write to these volumes in Amazon S3 and retains recently read data in your on-premises storage gateways cache and upload buffer storage. 1GB - 32TB in size for Cached Volumes.
 
@@ -511,7 +498,7 @@ it's locked down, it's not public and making objects public is not that easy. Yo
 		3. Can be applied to current versions as well as previous versions.
 
 	- S3 Transfer Accelerations.
-		So, we have our users, they're all around the world. We have our edge locations. Our users will upload their files to the edge locations first and then those files will go over the AWS backbone network to S3. And we saw how mostly it can improve speed and performance. So, if you do need to increase the performance of your, you know, of your users being able to upload files to S3, look at S3 Transfer Acceleration.
+		So, we have our users, they're all around the world. We have our edge locations. Our users will upload their files to the edge locations first and then those files will go over the AWS backbone network to S3. And we saw how mostly it can improve speed and performance. So, if you do need to increase the performance of your users being able to upload files to S3, look at S3 Transfer Acceleration.
 
 	- CloudFront.
 		1. Edge location - This is the location where the content is going to be cached and it's separate to an AWS region or availability zone.
@@ -731,16 +718,14 @@ it's locked down, it's not public and making objects public is not that easy. Yo
 			1. You might have multiple ENIs if you want to create a management network and you wanted to have, that separate to your production network.
 			2. You can also, have an additional ENI if you're using network and security appliances in your VPC.
 			3. It also allows you by having multiple ENIs you can create dual-homed instances with workloads or roles on distinct subnets.
-			4. You might have your production subnet, and then you might have your database subnet, and you might want to segregate that by using multiple ENIs, and it allows you to 			   create low budget high availability solutions.
+			4. You might have your production subnet, and then you might have your database subnet, and you might want to segregate that by using multiple ENIs, and it allows you to create low budget high availability solutions.
 
-	2. EN: Enhanced Networking uses what's called single root I/O virtualisation or SR-IOV, to provide high performance networking capabilities to unsupported instance types.
-	       ENA is a subset of Enhanced networking
+	2. EN: Enhanced Networking uses what's called single root I/O virtualisation or SR-IOV, to provide high performance networking capabilities to unsupported instance types. ENA is a subset of Enhanced networking.
 
 		2.1 Is uses single root IO virtualisation, or SR-IOV, to provide high performance networking capabilities on supported instance types.
-		    SR-IOV is a method of device virtualisation, that provides higher IO performance and lower CPU utilisation, when compared to traditional network interfaces.
-		    So it's just a way of speeding up your network essentially.
+		    SR-IOV is a method of device virtualisation, that provides higher IO performance and lower CPU utilisation, when compared to traditional network interfaces. So it's just a way of speeding up your network essentially.
 
-		2.2 Enhanced Networking provides higher bandwidth, higher packets per second performance consistently lower it into instance latencies, and there's no additional charge for using 			  Enhanced Networking, but your EC2 instance does have to support it.
+		2.2 Enhanced Networking provides higher bandwidth, higher packets per second performance consistently lower it into instance latencies, and there's no additional charge for using Enhanced Networking, but your EC2 instance does have to support it.
 
 		2.3 Use Enhanced Networking where you want good network performance.
 
@@ -750,16 +735,13 @@ it's locked down, it's not public and making objects public is not that easy. Yo
 
 			Or
 
-			Intel 82599 Virtual Function, or VF interface, which supports network speeds of up to 10 gigabits per second, for supported instance types.
-			And this is typically used on older instances.
+			Intel 82599 Virtual Function, or VF interface, which supports network speeds of up to 10 gigabits per second, for supported instance types. And this is typically used on older instances.
 
 			Tip: In any scenario, question that you get in your exam, you probably want to choose ENA (100 Gbps) over VF (10 Gbps)
 
-	3. Elastic Fabric Adapter: A network device that you attach to your EC2 instance to accelerate High Performance Compute, so HPC and machine learning applications.
-
 		3.1 An Elastic Fabric Adapter (EFA) is a network device that you can attach to your EC2 instance to accelerate High Performance Computing or HPC, and machine learning applications.
 
-		3.2 It's really important, if you get a scenario question and they're talking about ENI versus ENA versus EFA, and they're talking about HPC and machine learning, then you want to 			  choose an Elastic Fabric Adapter.
+		3.2 It's really important, if you get a scenario question and they're talking about ENI versus ENA versus EFA, and they're talking about HPC and machine learning, then you want to choose an Elastic Fabric Adapter.
 
 		3.3 Elastic Fabric Adapters, provides lower and more consistent latency and higher throughputs than TCP transport, traditionally used in cloud based, HPC systems.
 
@@ -773,12 +755,11 @@ it's locked down, it's not public and making objects public is not that easy. Yo
 				For basic networking, perhaps you need a separate management workload to your production network or a separate logging network and you need to do this at a low cost.
 				In this scenario, just use multiple ENI's for each network.
 
-		2. Enhanced Network
+		2. Enhanced Networking
 				For when you need speeds between 10 gigabits per second and 100 gigabits per second anywhere where you need reliable high throughput.
 
 		3. Elastic Fabric Adapter
-				For when you need to accelerate, High Performance Computing, HPC and machine learning applications or if you need to do an OS bypass.
-				If you see a scenario question mentioning HPC, or machine learning or asking about OS-bypass, then you want to choose an Elastic Fabric Adapter.
+				For when you need to accelerate, High Performance Computing, HPC and machine learning applications or if you need to do an OS bypass. If you see a scenario question mentioning HPC, or machine learning or asking about OS-bypass, then you want to choose an Elastic Fabric Adapter.
 
 ** Encrypted Root Device Volumes & Snapshots - LAB (Exam Tips)
 		1. Snapshots of encrypted volumes are encrypted automatically.
@@ -820,8 +801,7 @@ it's locked down, it's not public and making objects public is not that easy. Yo
 ** Spot Fleets
 	1. Spot fleets and a spot fleet is just a collection of spot instances and optionally on-demand instances.
 
-	2. The spot fleet attempts to launch the number of spot and on-demand instances to meet the target capacity that you specified in the spot fleet requests. The request for spot instances is fulfilled if there's available capacity and if the maximum price that you specified in the request exceeds the current spot price. The spot fleet also attempts to maintain its target capacity fleet,
-if your spot instances are interrupted. So it will relaunch those instances.
+	2. The spot fleet attempts to launch the number of spot and on-demand instances to meet the target capacity that you specified in the spot fleet requests. The request for spot instances is fulfilled if there's available capacity and if the maximum price that you specified in the request exceeds the current spot price. The spot fleet also attempts to maintain its target capacity fleet, if your spot instances are interrupted. So it will relaunch those instances.
 	3. Spot fleets, will try and match the get capacity with your price restraints
 		3.1 Set up different launch pools and define things like your EC2 instance type, your operating system and Availability Zone
 		3.2 You can have multiple pools and the fleet will choose the best way to implement depending on the strategy that you define
@@ -831,8 +811,7 @@ if your spot instances are interrupted. So it will relaunch those instances.
 		4.1 capacityOptimized: The spot instances comes from the pool with optimal capacity for the number of instances launching. So you're basically guaranteeing that you have a certain amount of capacity.
 		4.2 lowestPrice: The spot instances come from the pool with the lowest price and that's the default strategy.
 		4.3 Diversified: The spot instances distributed across all your different pools that you defined
-		4.4 InstancePoolsToUseCount: The spot instances are distributed across the number of spot instance pools that you specify and the parameter is only valid when used in combination with the lowest price. So this is kind of like a combination of diversified with lowest price, but with diversified, it's using all the pools.
-With instance pools to use count you define which pools that you want. It will launch in those pools at the lowest price.
+		4.4 InstancePoolsToUseCount: The spot instances are distributed across the number of spot instance pools that you specify and the parameter is only valid when used in combination with the lowest price. So this is kind of like a combination of diversified with lowest price, but with diversified, it's using all the pools. With instance pools to use count you define which pools that you want. It will launch in those pools at the lowest price.
 
 Exam Tips:
 	1. Spot instances can save you up to 90% of on-demand instances.
@@ -842,8 +821,7 @@ Exam Tips:
 
 ** EC2 Hibernate:
 
-	We have learned so far we can stop and terminate EC2 instances. If we stop the instance, the data is kept on the disk (EBS) and will remain on the disk until the EC2 instance is started.
-	If the instance is terminated, then by default the root device volume will also be terminated.
+	We have learned so far we can stop and terminate EC2 instances. If we stop the instance, the data is kept on the disk (EBS) and will remain on the disk until the EC2 instance is started. If the instance is terminated, then by default the root device volume will also be terminated.
 
 	When we start our EC2 instance, the following happens:
 		1. OS boots up
@@ -957,18 +935,10 @@ Exam Tips:
 	EFS stands for Elastic File System and it's a file storage service for Amazon's Elastic Compute Cloud or EC2 instances.
 
 	Important: So it's similar to EBS, except where you've got EBS, you can only mount your virtual disk to one EC2 instance and that's just the way it works.
-	You cannot have an EC2 instance, two EC2 instances sharing an EBS volume.
+	You cannot have an EC2 instance, two EC2 instances sharing an EBS volume. However, you can have them sharing an EFS volume. So EFS is an easy way to use and provide a simple interface that allows you to create and configure file systems quickly and easily and with the EFS, storage capacity is elastic, growing and shrinking automatically as you add and remove files so your applications have the storage they need when they need it.
 
-	However, you can have them sharing an EFS volume. So EFS is an easy way to use and provide a simple interface that allows you to create and configure file systems
-	quickly and easily and with the EFS, storage capacity is elastic, growing and shrinking automatically as you add and remove files so your applications have the storage
-	they need when they need it.
-
-	So it is actually really cool. Basically if you provision an EFS instance,
-	it will just grow automatically so you could put like one terabyte file on there and then add another terabyte, you don't need to pre-provision storage like you do with EBS.
-	So EFS is a way, it's great for basically file servers, it's a great way to share files between different EC2 instances. So as always, the best way to learn EFS is to go in and start using it.
-
-	What we're going to do is we're going to create two little EC2 instances, we're going to run a bootstrap script on them to install some tools as well as Apache
-	and then what we're going to do is we're going to go and mount this, our var dub-dub-dub HTML directory to an EFS mount point and then that way, we only need one copy of our website or   our website will be stored on EFS and when we go and update or make changes to it we're just that those changes are replicated automatically across all our EC2 instances. So if you've    got the time, please join me in the AWS console.
+	So it is actually really cool. Basically if you provision an EFS instance, it will just grow automatically so you could put like one terabyte file on there and then add another terabyte, you don't need to pre-provision storage like you do with EBS. So EFS is a way, it's great for basically file servers, it's a great way to share files between different EC2 instances. So as always, the best way to learn EFS is to go in and start using it.
+	What we're going to do is we're going to create two little EC2 instances, we're going to run a bootstrap script on them to install some tools as well as Apache and then what we're going to do is we're going to go and mount this, our var dub-dub-dub HTML directory to an EFS mount point and then that way, we only need one copy of our website or   our website will be stored on EFS and when we go and update or make changes to it we're just that those changes are replicated automatically across all our EC2 instances. So if you've    got the time, please join me in the AWS console.
 
 	For the Lab:
 	#!/bin/bash
@@ -988,12 +958,11 @@ Exam Tips:
 
 ** Amazon FSx for Windows and Amazon FSx for Lustre
 
-  1. Amazon Fsx for Windows File Server provides a fully managed native Microsoft Windows file system so you can easily move your Windows-based applications that require file storage to AWS.
-     Amazon FSx is built on Windows Server.
+  1. Amazon Fsx for Windows File Server provides a fully managed native Microsoft Windows file system so you can easily move your Windows-based applications that require file storage to AWS. Amazon FSx is built on Windows Server.
 
 	How is Windows FSx different to EFS
 	- Windows FSx:
-		1. A managed Windows Server that runs Windows Server Message Block (SMB)-based file services.
+		1. A managed Windows Server that runs Windows Server Message Block (SMB)- based file services.
 		2. Designed for Windows and Windows applications.
 		3. Supports AD users, access control lists, groups and security policies, along with Distributed File System (DFS) namespaces and replication.
 
@@ -1007,7 +976,7 @@ Exam Tips:
 
 	How is Amazon FSx for Lustre different to EFS
 	- Lustre FSx:
-		1. Designed specifically for fast processing of workloads such as machine learning, high performance computing (HOC), video processing, financial modelling and electronic design automation (EDA).
+		1. Designed specifically for fast processing of workloads such as machine learning, high performance computing (HPC), video processing, financial modelling and electronic design automation (EDA).
 		2. Lets you launch and run a file system that provides sub-millisecond access to your data and allows you to read and write data at speeds of up to hundreds of gigabytes per second of throughput and millions of IOPS.
 
 	- EFS:
@@ -1031,13 +1000,10 @@ Exam Tips:
 		   Only certain instances can be launched in to a Clustered Placement Group.
 
 		2. Spread Placement Groups: A spread placement group is a group of instances that are each placed on distinct underlying hardware.
-		   Spread placement groups are recommended for applications that have a small number of critical instances that should be kept separate from each other.
-		   THINK INDIVIDUAL INSTANCES.
+		   Spread placement groups are recommended for applications that have a small number of critical instances that should be kept separate from each other. THINK INDIVIDUAL INSTANCES.
 
 		3. Partitioned Placement Groups: When using partition placement groups, Amazon divides each group into logical segments called partitions.
-		   Amazon EC2 ensures that each partition with a placement group has its own set of racks.
-	     No two partitions within a placement group share the same racks, allowing you to isolate the impact of h/w failure within your application.
-		   THINK MULTIPLE INSTANCES.
+		   Amazon EC2 ensures that each partition with a placement group has its own set of racks. No two partitions within a placement group share the same racks, allowing you to isolate the impact of h/w failure within your application. THINK MULTIPLE INSTANCES.
 		   Use case: HDFS, HBase, Hadoop, Cassandra and Kafka
 
 * EC2 Placement Groups - Exam Tips
@@ -1054,7 +1020,7 @@ Exam Tips:
 
 	It's never been easier to get started with high-performance compute (HPC) that in any other time in history - and AWS is the perfect place to perform it.
 
-	You can create a large number of resources in almost no time. You only pay for the resources yo use - and once finished, you can destroy the resources.
+	You can create a large number of resources in almost no time. You only pay for the resources you use - and once finished, you can destroy the resources.
 
 	HPC is used for industries such as genomics, finance and financial risk modelling, machine learning, weather prediction and even autonomous driving.
 
@@ -1063,8 +1029,7 @@ Exam Tips:
 		a. Snowball, Snowmobile (terabytes/petabytes worth of data)
 		b. AWS Data Sync to store S3, EFS, Fsx for windows ... etc
 		c. AWS Direct Connect: Is a cloud service solution that makes it easy to establish a dedicated network connection from your premises to AWS.
-		   Using AWS Direct Connect, you can establish private connectivity between AWS and your data centre, office or colocation environment - which, in many cases,
-		   can reduce your network costs, increase bandwidth throughput and provide a more consistent network experience than internet-base connections.
+		   Using AWS Direct Connect, you can establish private connectivity between AWS and your data centre, office or colocation environment - which, in many cases, can reduce your network costs, increase bandwidth throughput and provide a more consistent network experience than internet-base connections.
 
 	2. Compute and networking:
 		a. EC2 instances that are GPU or CPU optimised
@@ -1074,8 +1039,7 @@ Exam Tips:
 			1. It uses single root I/O virtualisation (SR-IOV) to provide high-performance n/w capabilities on supported instance types.
 			   SR-IOV is a method of device virtualisation that provides high I/O performance and lower CPU utilisation when compared to traditional virtualised n/w interfaces.
 
-			2. Enhanced networking provides higher bandwidth, higher packet per second (PPS) performance, and consistency lower inter-instance latencies.
-			   There is no additional charge for using enhanced networking.
+			2. Enhanced networking provides higher bandwidth, higher packet per second (PPS) performance, and consistency lower inter-instance latencies. There is no additional charge for using enhanced networking.
 
 			3. Use where you want for network performance.
 
@@ -1084,25 +1048,16 @@ Exam Tips:
 			2. Depending on your instance type, Enhance Networking can be enabled using two methodologies,
 
 				1.1 Elastic Network Adapter or ENA, which supports network speeds of up to 100 gigabits per second for supported instance types.
-
 				Or
-
-				Intel 82599 Virtual Function, or VF interface, which supports network speeds of up to 10 gigabits per second, for supported instance types.
-				And this is typically used on older instances.
-
-				Tip: In any scenario, question that you get in your exam, you probably want to choose ENA (100 Gbps) over VF (10 Gbps),
-
-		f. Elastic Fabric Adapters
-			3. Elastic Fabric Adapter: A network device that you attach to your EC2 instance to accelerate High Performance Compute, so HPC and machine learning applications.
-
+				Intel 82599 Virtual Function, or VF interface, which supports network speeds of up to 10 gigabits per second, for supported instance types. And this is typically used on older instances.
+				Tip: In any scenario, question that you get in your exam, you probably want to choose ENA (100 Gbps) over VF (10 Gbps),Elastic Fabric Adapters
 			3.1 An Elastic Fabric Adapter (EFA) is a network device that you can attach to your EC2 instance to accelerate High Performance Computing or HPC, and machine learning applications.
 
-			3.2 It's really important, if you get a scenario question and they're talking about ENI versus EFA versus EFA, and they're talking about HPC and machine learning, then you want to 			    choose an Elastic Fabric Adapter.
+			3.2 It's really important, if you get a scenario question and they're talking about ENI versus EFA versus EFA, and they're talking about HPC and machine learning, then you want to choose an Elastic Fabric Adapter.
 
 			3.3 Elastic Fabric Adapters, provides lower and more consistent latency and higher throughputs than TCP transport, traditionally used in cloud based, HPC systems.
 
 			3.4 EFA can use OS-bypass. OS-bypass enables high performance compute and machine learning applications to bypass the operating system kernel and to communicate directly with the EFA device. It makes it a lot faster with a lot lower latency. However, it's not supported on Windows currently, it's only supported with Linux.
-
 
 	3. Storage: What are the storage services that allow us to achieve HPC on AWS
 
@@ -1119,7 +1074,7 @@ Exam Tips:
 
 		4.1 AWS Batch
 			4.1.1 AWS Batch enables developers, scientists and engineers to easily and efficiently run hundreds of thousands of batch computing jobs on AWS.
-			4.1.2 AWS Batch supports multi-node parallel jobs, which allows your to run a single job that spans multiple EC2 instances.
+			4.1.2 AWS Batch supports multi-node parallel jobs, which allows you to run a single job that spans multiple EC2 instances.
 			4.1.3 You can easily schedule jobs and launch EC2 instances according to your needs.
 
 		4.2 AWS Parallel Cluster
@@ -1520,19 +1475,15 @@ There is no charge for creating a placement group" and "The name of your placeme
 
 ** Elastic Map Reduce (EMR) Overview - Exam Tips
 
-	1. Amazon EMR is the industry-leading cloud big data platform for processing vast amounts of data using open-source tools such as Apache Spark, Apache Hive, Apache HBase, Apache Flink, Apache Hudi and Presto.
-	   With EMR, you can run petabyte-scale analysis at less than half the cost of traditional on-premises solutions and over three times faster than standard Apache Spark.
+	1. Amazon EMR is the industry-leading cloud big data platform for processing vast amounts of data using open-source tools such as Apache Spark, Apache Hive, Apache HBase, Apache Flink, Apache Hudi and Presto. With EMR, you can run petabyte-scale analysis at less than half the cost of traditional on-premises solutions and over three times faster than standard Apache Spark.
 
 	2. The central component of Amazon EMR is the cluster. A cluster is a collection of Amazon EC2 instances. Each instance in the cluster is called a node.
-	   Each node has a role within the cluster, referred to as the node type.
-
-	   Amazon EMR also installs different software components on each node type, giving each node a role in a distributed application like Apache Hadoop.
+	   Each node has a role within the cluster, referred to as the node type. Amazon EMR also installs different software components on each node type, giving each node a role in a distributed application like Apache Hadoop.
 
 	3. The node types in Amazon EMR are as follows:
 
 		- Master node:
-			A node that manages the cluster. The master node tracks the status of tasks and monitors the health of the cluster. Every cluster has a master node.
-		  By default - log data is stored on the master node.
+			A node that manages the cluster. The master node tracks the status of tasks and monitors the health of the cluster. Every cluster has a master node. By default - log data is stored on the master node.
 
 		- Core node:
 			A node with software components that runs tasks and stores data in the Hadoop Distributed File System (HDFS) on your cluster.
@@ -1546,7 +1497,7 @@ There is no charge for creating a placement group" and "The name of your placeme
 		- We can set this up only when we create the cluster and not after creating the cluster.
 
 ** Database Summary	(Exam Tips)
-		1. Relational databases on AWS - RDS:
+		1. Relational databases on AWS - RDS: OLTP
 			1.1 SQL Server
 			1.2 Oracle
 			1.3 PostgreSQL
@@ -1717,8 +1668,7 @@ For applications running on Amazon EC2, you can use profile credentials specific
 				- Cloud Directory
 				- Cognito User pools
 
-				If you are a developer and you don't need AD, you can use Cloud Directory to create directories that organise and manage hierarchical information and
-				Cognito user pools work with mobile and web
+				If you are a developer and you don't need AD, you can use Cloud Directory to create directories that organise and manage hierarchical information and Cognito user pools work with mobile and web
 
 ** IAM Policies - this lesson cover IAM boundaries and how to IAM evaluates policies
 
@@ -1943,14 +1893,12 @@ For applications running on Amazon EC2, you can use profile credentials specific
 
 		Answer: Multivalue Routing
 
-		The R53 Simple policy will provide a list of multiple IP addresses in random order. However it is less feature rich that the Multivalue Routing policy which is why AWS released the newer solution.
-		https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html
+		The R53 Simple policy will provide a list of multiple IP addresses in random order. However it is less feature rich that the Multivalue Routing policy which is why AWS released the newer solution. https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html
 
 		Round Robin would be the traditional solution to this problem. However, a) it is not offered and as answer, and b) R53 Multivalue offers a smarter service. R53 Multivalue lets you responds to DNS queries with up to eight IP address of 'healthy' targets. Plus it will give a different set of 8 to different DNS resolvers. The choice of which to use is left to the requesting service effectively creating a form or randomisation. The R53 Simple policy will provide a list of multiple instance, but Multivalue is the AWS preferred option for this type of service. https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-simple-configs.html
 
 		- Which of the following Route 53 policies allow you to route data to a second resource if the first is unhealthy, and route data to resources that have better performance?
 		Answers: Failover Routing and Latency-based Routing
-		Incorrect: Geolocation Routing and Latency-based Routing, Geoproximity Routing and Geolocation Routing, Multivalue Routing and Simple Routing
 
 		Failover Routing and Latency-based Routing are the only two correct options, as they consider routing data based on whether the resource is healthy or whether one set of resources is more performant than another. Any answer containing location based routing (Geoproximity and Geolocation) cannot be correct in this case, as these types only consider where the client or resources are located before routing the data. They do not take into account whether a resource is online or slow. Simple Routing can also be discounted as it does not take into account the state of the resources.
 
@@ -3022,6 +2970,26 @@ Amazon S3 Select is designed to help analyze and process data within an object i
 24. EBS snapshots use incremental backups and are stored in S3. Restores can be done from any of the snapshots. The original full snapshot can be safely deleted without impacting the ability to use the other related incremental backups.
 25. Since the additional disk does not contain the operating system, you can detach it in the EC2 Console while the instance is running. However, any data on that drive would become inaccessible, and possibly cause problems for the EC2 instance
 26. You cannot delete a snapshot of the root device of an EBS volume used by a registered AMI.
-27. 
-
+27. IAM Roles can be attached to instances in the stopped or running state, or replaced for instances in the running state. Prior to early 2017, you would only be able to attach an IAM role at launch, and if you wanted to attach a role, you would have to terminate and re-launch the instance.
+28. Enhanced networking uses single root I/O virtualization (SR-IOV) to provide high-performance networking capabilities on supported instance types. SR-IOV is a method of device virtualization that provides higher I/O performance and lower CPU utilization when compared to traditional virtualized network interfaces. Enhanced networking provides higher bandwidth, higher packet per second (PPS) performance, and consistently lower inter-instance latencies.
+29. Cluster Placement Groups are primarily about keeping you compute resources within one network hop of each other on high speed rack switches. This is only helpful when you have compute loads with network loads that are either very high or very sensitive to latency.
+30. Standard Reserved Instances cannot be moved between regions. You can choose if a Reserved Instance applies to either a specific Availability Zone, or an Entire Region, but you cannot change the region
+31. Scaling out is where you have more of the same resource separately working in parallel (visualize services sitting side by side). Scaling Up is where you make it bigger and bigger like an ugly tower with more floors being added after the initial design was finished
+32. Duplicate messages occur when a consumer does not complete its message processing and the visibility timeout of the message expires, making it visible for another consumer to obtain. Increasing the visibility timeout to enable the consumer processing to complete, will prevent duplicate messages.
+33. Key components of Kinesis Data Firehose are: delivery streams, records of data and destinations. Producers, shards and consumers are components of Kinesis Data Streams. Amazon Kinesis Data Firehose is the easiest way to load streaming data into data stores and analytics tools. It can capture, transform, and load streaming data into Amazon S3, Amazon Redshift, Amazon Elasticsearch Service, and Splunk, enabling near real-time analytics with existing business intelligence tools and dashboards you’re already using today.
+34. Amazon SWF stores tasks, assigns them to workers when they are ready, and monitors their progress. It ensures that a task is assigned only once and is never duplicated.
+35. Amazon Kinesis Data Streams (KDS) is a massively scalable and durable real-time data streaming service. KDS can continuously capture gigabytes of data per second from hundreds of thousands of sources such as website clickstreams, database event streams, financial transactions, social media feeds, IT logs, and location-tracking events. The data collected is available in milliseconds to enable real-time analytics use cases such as real-time dashboards, real-time anomaly detection, dynamic pricing, and more.
+36. Amazon API Gateway is a fully managed service that makes it easy for developers to publish, maintain, monitor, and secure APIs at any scale. With a few clicks in the AWS Management Console, you can create an API that acts as a “front door” for applications to access data, business logic, or functionality from your AWS origin back-end services. Using API Gateway, you can create RESTful APIs and WebSocket APIs that enable real-time two-way communication applications. API Gateway supports containerized and serverless workloads, as well as web applications.
+37. SNS is a Notification service for sending text based communication of different types to different destinations. SQS is a Queue system for asynchronously manages tasks (called messages)
+38. When a topic is created, Amazon SNS will assign a unique ARN (Amazon Resource Name) to the topic, which will include the service name (SNS), region, AWS ID of the user and the topic name. The ARN will be returned as part of the API call to create the topic. Whenever a publisher or subscriber needs to perform any action on the topic, they should reference the unique topic ARN.
+39. Domains provide a way of scoping Amazon SWF resources within your AWS account. All the components of a workflow, such as the workflow type and activity types, must be specified to be in a domain. It is possible to have more than one workflow in a domain; however, workflows in different domains can't interact with each other.
+40. 'Serverless' computing is not about eliminating servers, but shifting most of the responsibility for infrastructure and operation of the infrastructure to a vendor so that you can focus more on the business services, not how to manage the infrastructure that they run on. Billing does tend to be based on simple units, but the choice of services, intended usage pattern (RIs), and amount of capacity needed also influences the pricing.
+41. ALB, Cognito, Lex, Alexa, API Gateway, CloudFront, and Kinesis Data Firehose are all valid direct (synchronous) triggers for Lambda functions. S3 is one of the valid asynchronous triggers.
+42. AWS X-Ray helps developers analyze and debug production, distributed applications, such as those built using a microservices & serverless architectures. With X-Ray, you can understand how your application and its underlying services are performing to identify and troubleshoot the root cause of performance issues and errors.
+43. Each time a Lambda function is triggered, an isolated instance of that function is invoked. Multiple triggers result in multiple concurrent invocations, one for each time it is triggered
+44. Lambda billing is based on both The MB of RAM reserved and the execution duration in 100ms units.
+The number of requests for each time the lambda executes in response to an event notification, or invoke call is one of the factors involved in Lambda pricing.
+As of December 2020, the Lambda compute duration is billed in 1ms increments instead of being rounded up to the nearest 100 ms increment per invoke. For example, a function that runs in 30ms on average used to be billed for 100ms. Now, it will be billed for 30ms resulting in a 70% drop in its duration spend. 
+45. Lambda scales out automatically - each time your function is triggered, a new, separate instance of that function is started. There are limits, but these can be adjusted on request.
+46. 
 
