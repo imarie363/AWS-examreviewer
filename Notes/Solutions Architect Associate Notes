@@ -1939,6 +1939,7 @@ For applications running on Amazon EC2, you can use profile credentials specific
 			- You can peer VPC's with other AWS accounts as well as with other VPCs in the same account
 			- Peering is in a star configuration: ie 1 central VPC peers with 4 others. NO TRANSITIVE PEERING (Meaning: VPCA peered to VPCB and VPCC, so VPCB can't talk to VPCC through VPCA, instead a VPC peering need to be established between VPCB and VPCC for the communication)
 			- You can peer between Regions now.
+			- VPC peering only routes traffic between source and destination VPCs. VPC peering does not support edge to edge routing.
 
 	** Exam Tips
 			- Think of a VPC as a logical datacenter in AWS
