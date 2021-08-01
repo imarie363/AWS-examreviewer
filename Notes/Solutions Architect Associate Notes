@@ -2993,4 +2993,4 @@ The number of requests for each time the lambda executes in response to an event
 As of December 2020, the Lambda compute duration is billed in 1ms increments instead of being rounded up to the nearest 100 ms increment per invoke. For example, a function that runs in 30ms on average used to be billed for 100ms. Now, it will be billed for 30ms resulting in a 70% drop in its duration spend. 
 45. Lambda scales out automatically - each time your function is triggered, a new, separate instance of that function is started. There are limits, but these can be adjusted on request.
 46. 
-
+fs
